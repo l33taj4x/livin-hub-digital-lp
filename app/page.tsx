@@ -78,14 +78,12 @@ export default function Home() {
             </Button>
           </div>
           <div className="relative">
-            <div className="relative w-120 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl h-80 sm:h-60 md:h-80 lg:h-[25rem] xl:h-[35rem] mx-auto">
-              <div>
-                <img
-                  src="/image-hero.jpg"
-                  alt="Hero Image"
-                  className="w-full h-full object-cover rounded-3xl shadow-2xl transform hover:scale-105 transition-transform duration-500"
-                />
-              </div>
+            <div className="relative w-120 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl h-64 sm:h-60 md:h-80 lg:h-[20rem] xl:h-[35rem] mx-auto">
+              <img
+                src="/image-hero.jpg"
+                alt="Hero Image"
+                className="w-full h-full object-cover rounded-3xl shadow-2xl transform hover:scale-105 transition-transform duration-500"
+              />
             </div>
           </div>
         </div>
