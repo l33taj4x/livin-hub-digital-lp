@@ -245,7 +245,7 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-10 bg-gradient-to-r from-[#015C54] to-[#068C88] relative bg-cover bg-center overflow-hidden" style={{ backgroundImage: "url('/background-servicos.jpg')" }}>
+      <section id="services" className="py-10 bg-gradient-to-r from-[#015C54] to-[#068C88] relative bg-cover bg-center overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-4">Como a Livin pode te ajudar</h2>
