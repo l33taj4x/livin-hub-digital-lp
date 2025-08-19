@@ -66,7 +66,7 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
           <div className="text-white animate-fade-in-up">
-            <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+            <h1 className="text-5xl lg:text-7xl font-bold mb-8 leading-small">
               Somos o hub entre você e o <span className="text-[#FC7306] animate-pulse">digital.</span>
             </h1>
             <p className="text-1xl mb-8 text-white/80 max-w-md">
@@ -78,7 +78,7 @@ export default function Home() {
             </Button>
           </div>
           <div className="relative">
-            <div className="relative w-120 h-160 mx-auto">
+            <div className="relative w-120 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl h-80 sm:h-60 md:h-80 lg:h-[25rem] xl:h-[35rem] mx-auto">
               <div>
                 <img
                   src="/image-hero.jpg"
@@ -456,34 +456,18 @@ export default function Home() {
         </div>
       </section> */}
 
-      <section id="garanta-sua-data" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold text-[#015C54] mb-6">
-            Pronto para dar o próximo passo no digital?
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
-            Vamos juntos criar uma presença que conecta, engaja e gera resultados reais para a sua marca.
-          </p>
-        </div>
-        <div className="flex justify-center mt-8">
-          <Button
-            className="bg-[#FC7306] hover:bg-[#FAA24E] text-white px-8 py-3 rounded-full text-base font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
-          >
-            Chame no WhatsApp<Send />
-          </Button>
-        </div>
-      </section>
-
+      
       {/* CTA Section */}
+
       <section className="py-20 bg-gradient-to-r from-[#015C54] to-[#068C88] relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-10 left-1/4 w-32 h-32 bg-white/5 rounded-full animate-pulse"></div>
           <div className="absolute bottom-10 right-1/4 w-24 h-24 bg-[#FC7306]/10 rounded-full animate-bounce"></div>
         </div>
         <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-          <h2 className="text-4xl font-bold text-white mb-6">Seu evento merece viver além do dia em que acontece.</h2>
+          <h2 className="text-4xl font-bold text-white mb-6">Pronto para dar o próximo passo no digital?</h2>
           <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
-            Captamos cada momento com um olhar estratégico, transformando emoções em conteúdo que conecta e gera lembranças.
+            Vamos juntos criar uma presença que conecta, engaja e gera resultados reais para a sua marca.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="https://wa.me/5548998604665" target="_blank" rel="noopener noreferrer">
@@ -491,9 +475,25 @@ export default function Home() {
               variant="outline"
               className="border-white text-white hover:bg-white hover:text-[#015C54] px-8 py-3 rounded-full text-base font-medium bg-transparent transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
             >
-              Garanta a sua data <ArrowRight className="w-4 h-4" />
+              Chame no WhatsApp<Send />
             </Button>
             </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
+          <h2 className="text-4xl font-bold text-[#015C54] mb-6">Seu evento merece viver além do dia em que acontece.</h2>
+          <p className="text-lg text-gray-600  mb-8 max-w-2xl mx-auto">
+            Captamos cada momento com um olhar estratégico, transformando emoções em conteúdo que conecta e gera lembranças.
+          </p>
+          <div className="flex justify-center mt-8">
+            <Button
+              className="bg-[#FC7306] hover:bg-[#FAA24E] text-white px-8 py-3 rounded-full text-base font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
+            >
+              Garanta a sua data <ArrowRight className="w-4 h-4" />
+            </Button>
           </div>
         </div>
       </section>
