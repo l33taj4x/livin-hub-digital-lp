@@ -13,9 +13,9 @@ export default function Home() {
       {/* Header */}
       <header className="absolute top-0 left-0 right-0 z-50 px-6 py-4">
         <nav className="flex items-center justify-between max-w-7xl mx-auto">
-            <div className="hidden sm:block w-24 sm:w-16 md:w-20 lg:w-26 xl:w-32">
-              <img src="/livin-logo-branca.png" alt="livin logo branca" className="w-full h-auto" />
-            </div>
+          <div className="hidden sm:block w-24 sm:w-16 md:w-20 lg:w-26 xl:w-32">
+            <img src="/livin-logo-branca.png" alt="livin logo branca" className="w-full h-auto" />
+          </div>
           <div className="hidden md:flex items-center space-x-8 text-white text-md">
             <ScrollLink
               to="services"
@@ -49,7 +49,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen bg-gradient-to-br from-[#015C54] via-[#068C88] to-[#015C54] flex items-center overflow-hidden">
+      <section className="relative min-h-screen pt-24 bg-gradient-to-br from-[#015C54] via-[#068C88] to-[#015C54] flex items-center overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-32 h-32 bg-[#FC7306]/10 rounded-full animate-pulse"></div>
           <div className="absolute bottom-20 right-10 w-24 h-24 bg-[#FAA24E]/10 rounded-full animate-bounce"></div>
@@ -70,11 +70,13 @@ export default function Home() {
             </Button>
           </div>
           <div className="relative">
-            <div className="relative w-120 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl h-64 sm:h-60 md:h-80 lg:h-[20rem] xl:h-[35rem] mx-auto">
+            <div className="relative w-120 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl 
+                            h-64 sm:h-60 md:h-80 lg:h-[20rem] xl:h-[35rem] max-h-[756px] mx-auto">
               <img
                 src="/image-hero.jpg"
                 alt="Hero Image"
-                className="w-full h-full object-cover rounded-3xl shadow-2xl transform hover:scale-105 transition-transform duration-500"
+                className="w-full h-full object-cover object-center rounded-3xl shadow-2xl 
+                          transform hover:scale-105 transition-transform duration-500"
               />
             </div>
           </div>
@@ -84,7 +86,7 @@ export default function Home() {
       {/* What We Do Section */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-            <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center">
             <img
               src="/pessoal-livin-hub.jpg"
               alt="Equipe Livin Hub Digital"
@@ -298,7 +300,7 @@ export default function Home() {
               <div className="w-16 h-16 bg-[#FC7306]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#FC7306]/20 group-hover:scale-110 transition-all duration-300">
                 <Monitor className="w-8 h-8 text-[#FC7306] group-hover:scale-110 transition-transform duration-300" />
               </div>
-              <h3 className="text-xl font-bold text-[#015C54] group-hover:text-[#068C88] transition-colors duration-300">                
+              <h3 className="text-xl font-bold text-[#015C54] group-hover:text-[#068C88] transition-colors duration-300">
                 Identidade Visual
               </h3>
             </CardContent>
@@ -308,7 +310,7 @@ export default function Home() {
               <div className="w-16 h-16 bg-[#FC7306]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#FC7306]/20 group-hover:scale-110 transition-all duration-300">
                 <ChartGantt className="w-8 h-8 text-[#FC7306] group-hover:scale-110 transition-transform duration-300" />
               </div>
-              <h3 className="text-xl font-bold text-[#015C54] group-hover:text-[#068C88] transition-colors duration-300">                
+              <h3 className="text-xl font-bold text-[#015C54] group-hover:text-[#068C88] transition-colors duration-300">
                 Diagnóstico de Perfil
               </h3>
             </CardContent>
@@ -318,7 +320,7 @@ export default function Home() {
               <div className="w-16 h-16 bg-[#FC7306]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#FC7306]/20 group-hover:scale-110 transition-all duration-300">
                 <BriefcaseBusiness className="w-8 h-8 text-[#FC7306] group-hover:scale-110 transition-transform duration-300" />
               </div>
-              <h3 className="text-xl font-bold text-[#015C54] group-hover:text-[#068C88] transition-colors duration-300">                
+              <h3 className="text-xl font-bold text-[#015C54] group-hover:text-[#068C88] transition-colors duration-300">
                 Google Meu Negócio
               </h3>
             </CardContent>
@@ -328,7 +330,7 @@ export default function Home() {
               <div className="w-16 h-16 bg-[#FC7306]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#FC7306]/20 group-hover:scale-110 transition-all duration-300">
                 <Paperclip className="w-8 h-8 text-[#FC7306] group-hover:scale-110 transition-transform duration-300" />
               </div>
-              <h3 className="text-xl font-bold text-[#015C54] group-hover:text-[#068C88] transition-colors duration-300">                
+              <h3 className="text-xl font-bold text-[#015C54] group-hover:text-[#068C88] transition-colors duration-300">
                 Papelaria Criativa
               </h3>
             </CardContent>
@@ -338,7 +340,7 @@ export default function Home() {
               <div className="w-16 h-16 bg-[#FC7306]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#FC7306]/20 group-hover:scale-110 transition-all duration-300">
                 <ChartSpline className="w-8 h-8 text-[#FC7306] group-hover:scale-110 transition-transform duration-300" />
               </div>
-              <h3 className="text-xl font-bold text-[#015C54] group-hover:text-[#068C88] transition-colors duration-300">                
+              <h3 className="text-xl font-bold text-[#015C54] group-hover:text-[#068C88] transition-colors duration-300">
                 Tráfego Pago
               </h3>
             </CardContent>
@@ -348,7 +350,7 @@ export default function Home() {
               <div className="w-16 h-16 bg-[#FC7306]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#FC7306]/20 group-hover:scale-110 transition-all duration-300">
                 <Lightbulb className="w-8 h-8 text-[#FC7306] group-hover:scale-110 transition-transform duration-300" />
               </div>
-              <h3 className="text-xl font-bold text-[#015C54] group-hover:text-[#068C88] transition-colors duration-300">                
+              <h3 className="text-xl font-bold text-[#015C54] group-hover:text-[#068C88] transition-colors duration-300">
                 Criação de site e landing page
               </h3>
             </CardContent>
@@ -392,13 +394,13 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-4">
-             Por que escolher a <span className="font-bold text-[#FC7306]">Livin Hub Digital</span> para cuidar da sua marca nas redes sociais?</h2>
-              <p className="text-white/80 max-w-2xl mx-auto">
-                A Livin não é só uma agência. Somos um hub criativo e estratégico que entra de verdade no seu negócio para entender, construir e transformar.
-              </p>
-              <p className="text-white/80 mt-4 max-w-2xl mx-auto">
-                Enquanto você foca no que faz de melhor, nós cuidamos da presença digital da sua marca nas redes sociais ao branding, do conteúdo a estratégia com estratégia, consistência e criatividade.
-              </p>
+              Por que escolher a <span className="font-bold text-[#FC7306]">Livin Hub Digital</span> para cuidar da sua marca nas redes sociais?</h2>
+            <p className="text-white/80 max-w-2xl mx-auto">
+              A Livin não é só uma agência. Somos um hub criativo e estratégico que entra de verdade no seu negócio para entender, construir e transformar.
+            </p>
+            <p className="text-white/80 mt-4 max-w-2xl mx-auto">
+              Enquanto você foca no que faz de melhor, nós cuidamos da presença digital da sua marca nas redes sociais ao branding, do conteúdo a estratégia com estratégia, consistência e criatividade.
+            </p>
             <ul className="max-w-2xl mx-auto flex flex-col gap-6 mt-6">
               <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#068C88]/20 transition-all duration-300">
                 <div className="flex items-center">
@@ -423,16 +425,45 @@ export default function Home() {
             </ul>
           </div>
           <div className="text-center mb-16">
-            <h3 className="text-3xl font-bold text-[#FC7306] mb-4">
+            <h3 className="text-3xl font-bold text-white mb-4">
               Já são mais de 300 marcas impactadas em 6 anos de atuação no Brasil e nos EUA. E a próxima pode ser a sua.
             </h3>
           </div>
         </div>
       </section>
 
-      
+
       {/* CTA Section */}
       <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-2 grid md:grid-cols-2 gap-20 items-center">
+          <div className="text-center md:text-left mb-16 md:mb-0">
+            <h2 className="text-2xl font-bold text-[#FAA24E] mb-4">Você já tem um bom conteúdo.</h2>
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-[#015C54] to-[#068C88] bg-clip-text text-transparent mb-6">Agora é hora de ter uma estratégia que faça tudo isso vender.</h1>
+            <p className="text-gray-600 max-w-2xl mx-auto md:mx-0 mb-12">
+              Seja você uma empresa local, uma marca pessoal ou um pequeno negócio em crescimento, seu potencial digital merece um plano estratégico de verdade.
+            </p>
+            <a href="https://wa.me/5548998604665?text=Ol%C3%A1%2C%20quero%20estrat%C3%A9gia%20para%20o%20meu%20neg%C3%B3cio">
+              <Button className="bg-[#FC7306] cursor-pointer hover:bg-[#FAA24E] hover:shadow-xl duration-300 transition-all text-base px-4 py-6 hover:scale-110">QUERO ESTRATÉGIA PARA O MEU NEGÓCIO <ArrowRight className="w-4 h-4" /></Button>
+            </a>
+          </div>
+          <div className="flex justify-center gap-4 justify-self-end">
+            <img
+              src="/CTA-BRUNA.JPG"
+              alt="Equipe Livin Hub Digital"
+              className="rounded-3xl shadow-2xl w-full max-w-md object-cover"
+            />
+            <div className="flex flex-col justify-end">
+              <div className="text-left">
+                <p className="text-1lg font-base">Bruna de Bem</p>
+                <p className="text-1sm font-bold text-[#FAA24E]">Estrategista Digital</p>
+              </div>
+              <div className="text-left mt-4">
+                <p className="text-2sm font-base">Livin Hub Digital</p>
+                <p className="text-1sm font-bold text-[#068C88]">Founder</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section className="py-20 bg-gradient-to-r from-[#015C54] to-[#068C88] relative overflow-hidden">
