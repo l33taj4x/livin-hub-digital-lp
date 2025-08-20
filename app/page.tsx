@@ -468,13 +468,13 @@ export default function Home() {
             Vamos juntos criar uma presença que conecta, engaja e gera resultados reais para a sua marca.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://wa.me/5548998604665" target="_blank" rel="noopener noreferrer">
-            <Button
-              variant="outline"
-              className="border-white text-white hover:bg-white hover:text-[#015C54] px-8 py-3 rounded-full text-base font-medium bg-transparent transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
-            >
-              Chame no WhatsApp<Send />
-            </Button>
+            <a href="https://wa.me/5548998604665?text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20servi%C3%A7os%20da%20Livin%20Hub%20Digital" target="_blank" rel="noopener noreferrer">
+              <Button
+                variant="outline"
+                className="border-white text-white hover:bg-white hover:text-[#015C54] px-8 py-3 rounded-full text-base font-medium bg-transparent transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
+              >
+                Chame no WhatsApp<Send />
+              </Button>
             </a>
           </div>
         </div>
@@ -487,11 +487,13 @@ export default function Home() {
             Captamos cada momento com um olhar estratégico, transformando emoções em conteúdo que conecta e gera lembranças.
           </p>
           <div className="flex justify-center mt-8">
-            <Button
-              className="bg-[#FC7306] hover:bg-[#FAA24E] text-white px-8 py-3 rounded-full text-base font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
-            >
-              Garanta a sua data <ArrowRight className="w-4 h-4" />
-            </Button>
+            <a href="https://wa.me/5548998604665?text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20cobertura%20de%20evento%20e%20storymaker%20da%20Livin" target="_blank" rel="noopener noreferrer">
+              <Button
+                className="bg-[#FC7306] hover:bg-[#FAA24E] text-white px-8 py-3 rounded-full text-base font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
+              >
+                Garanta a sua data <ArrowRight className="w-4 h-4" />
+              </Button>
+            </a>
           </div>
         </div>
       </section>
