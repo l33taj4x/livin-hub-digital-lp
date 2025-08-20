@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Users, Edit3, TrendingUp, Lightbulb, Target, MessageCircle, ArrowRight, Star, Focus, Send, Smartphone, Monitor, ChartGantt, Briefcase, BriefcaseBusiness, Paperclip, ChartSpline } from "lucide-react"
 import { Link as ScrollLink } from "react-scroll"
 
-import { LogoCarousel } from "@/components/ui/logo-carousel"
+import { LogoCarousel } from "@/app/components/logo-carousel"
 
 export default function Home() {
 
@@ -432,6 +432,8 @@ export default function Home() {
 
       
       {/* CTA Section */}
+      <section className="py-20 bg-white">
+      </section>
 
       <section className="py-20 bg-gradient-to-r from-[#015C54] to-[#068C88] relative overflow-hidden">
         <div className="absolute inset-0">
