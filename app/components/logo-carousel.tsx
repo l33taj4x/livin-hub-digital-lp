@@ -13,7 +13,7 @@ import { useRef } from "react";
 export default function LogoCarousel() {
     const autoplay = useRef(
         Autoplay({
-            delay: 1000,
+            delay: 1500,
             stopOnInteraction: false,
             stopOnMouseEnter: true,
         })
@@ -30,6 +30,11 @@ export default function LogoCarousel() {
         { src: "/logos/logo-rm-no-bg.png", alt: "Logo RM" },
         { src: "/logos/logo-rodes-no-bg.png", alt: "Logo Rodes" },
         { src: "/logos/logo-rodima-no-bg.png", alt: "Logo Rodima" },
+        { src: "/logos/logo-avl-no-bg.png", alt: "Logo AVL" },
+        { src: "/logos/logo-brasil-recupera-no-bg.png", alt: "Logo BrasilRecupera" },
+        { src: "/logos/logo-grazi-soares-no-bg.png", alt: "Logo Grazi Soares" },
+        { src: "/logos/logo-hrs-no-bg.png", alt: "Logo HRS" },
+        { src: "/logos/logo-multi-afeto-no-bg.png", alt: "Logo Multiafeto" },
     ]
 
     if (!Array.isArray(logos) || logos.length === 0) {

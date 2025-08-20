@@ -43,13 +43,13 @@ export default function TestimonialsCarousel() {
       role: "Empresária e Infroprodutora",
       photo: "/depoimentos/anita.jpg",
     },
-        {
+    {
       text: `"A agência nos atende em todos os quesitos, o planejamento e criação de conteúdos é maravilhoso, era o maior problema que tinha com relação ao nosso MKT, desde que contratamos os serviços da Ilumi, nossa página cresceu e se desenvolveu e cresceu muito bem. Além de atenciosas, compreensivas e flexíveis. Sou muito grata pela parceria que temos firmado nesse quase um ano juntas."`,
       name: "Paloma Zaze's",
       role: "Zaze's Negócios Imobiliários",
       photo: "/depoimentos/zazes.jpg",
     },
-        {
+    {
       text: `"Eu amo trabalhar com a Ilumi, gosto da parceria, da rapidez, do profissionalismo e da leveza da equipe Ilumi."`,
       name: "Fabiana Martins",
       role: "Zais Semijoias",
