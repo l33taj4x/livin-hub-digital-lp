@@ -1,7 +1,7 @@
 "use client"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Users, Edit3, TrendingUp, Lightbulb, Target, MessageCircle, ArrowRight, Star, Focus, Send, Smartphone, Monitor, ChartGantt, Briefcase, BriefcaseBusiness, Paperclip, ChartSpline } from "lucide-react"
+import { Users, Lightbulb, Target, MessageCircle, ArrowRight, Star, Focus, Send, Smartphone, Monitor, ChartGantt, Briefcase, BriefcaseBusiness, Paperclip, ChartSpline } from "lucide-react"
 import { Link as ScrollLink } from "react-scroll"
 
 import { LogoCarousel } from "@/app/components/logo-carousel"
@@ -18,6 +18,15 @@ export default function Home() {
             <img src="/livin-logo-branca.png" alt="livin logo branca" className="w-full h-auto" />
           </div>
           <div className="hidden md:flex items-center space-x-8 text-white text-md">
+            <ScrollLink
+              to="what-we-do"
+              smooth={true}
+              duration={1200}
+              offset={-80}
+              className="hover:text-[#068C88] transition-all duration-300 hover:scale-105 cursor-pointer"
+            >
+              Quem somos nós
+            </ScrollLink>
             <ScrollLink
               to="services"
               smooth={true}
@@ -37,7 +46,25 @@ export default function Home() {
               Portfólio
             </ScrollLink>
             <ScrollLink
-              to="garanta-sua-data"
+              to="feedbacks"
+              smooth={true}
+              duration={1200}
+              offset={-80}
+              className="hover:text-[#068C88] transition-all duration-300 hover:scale-105 cursor-pointer"
+            >
+              Feedbacks
+            </ScrollLink>
+            <ScrollLink
+              to="why-choose-us"
+              smooth={true}
+              duration={1200}
+              offset={-80}
+              className="hover:text-[#068C88] transition-all duration-300 hover:scale-105 cursor-pointer"
+            >
+              Por que a Livin?
+            </ScrollLink>
+            <ScrollLink
+              to="contact-us"
               smooth={true}
               duration={1200}
               offset={-80}
@@ -85,7 +112,7 @@ export default function Home() {
       </section>
 
       {/* What We Do Section */}
-      <section className="py-20 bg-gray-50">
+      <section id="what-we-do" className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
           <div className="flex justify-center items-center">
             <img
@@ -108,7 +135,7 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-gradient-to-r from-[#015C54] to-[#068C88] relative overflow-hidden">
+      <section id="feedbacks" className="py-20 bg-gradient-to-r from-[#015C54] to-[#068C88] relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-10 left-10 w-20 h-20 bg-white/5 rounded-full animate-pulse"></div>
           <div className="absolute bottom-10 right-10 w-16 h-16 bg-[#FC7306]/10 rounded-full animate-bounce"></div>
@@ -150,38 +177,6 @@ export default function Home() {
             <h2 className="text-4xl font-bold text-white mb-4">O que nossos clientes dizem</h2>
           </div>
           <TestimonialsCarousel />
-          {/* <div className="grid md:grid-cols-2 gap-12">
-            <Card className="bg-white/10 border-white/20 backdrop-blur-sm hover:bg-white/15 transition-all duration-300 hover:scale-105">
-              <CardContent className="p-8 text-white">
-                <div className="flex mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 text-[#FC7306] fill-current" />
-                  ))}
-                </div>
-                <p className="text-lg mb-6 italic">
-                  "A Livin transformou completamente nossa presença digital. Em apenas 3 meses, triplicamos nosso
-                  engajamento e vendas!"
-                </p>
-                <div className="font-semibold">Mariana Silva</div>
-                <div className="text-white/70">CEO, Boutique Elegance</div>
-              </CardContent>
-            </Card>
-            <Card className="bg-white/10 border-white/20 backdrop-blur-sm hover:bg-white/15 transition-all duration-300 hover:scale-105">
-              <CardContent className="p-8 text-white">
-                <div className="flex mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 text-[#FC7306] fill-current" />
-                  ))}
-                </div>
-                <p className="text-lg mb-6 italic">
-                  "Equipe super criativa e atenciosa. Finalmente encontramos uma agência que entende nosso tom de voz e
-                  entrega resultados."
-                </p>
-                <div className="font-semibold">Rafael Mendes</div>
-                <div className="text-white/70">Diretor de Marketing</div>
-              </CardContent>
-            </Card>
-          </div> */}
         </div>
       </section>
 
@@ -387,7 +382,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section id="" className="py-20 bg-gradient-to-r from-[#015C54] to-[#068C88] relative overflow-hidden">
+      <section id="why-choose-us" className="py-20 bg-gradient-to-r from-[#015C54] to-[#068C88] relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-[#FC7306]/10 rounded-full animate-spin-slow"></div>
           <div className="absolute bottom-16 right-1/4 w-20 h-20 bg-white/10 rounded-full animate-pulse"></div>
@@ -441,7 +436,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-white">
+      <section id="contact-us" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-2 grid md:grid-cols-2 gap-20 items-center">
           <div className="text-center md:text-left mb-16 md:mb-0">
             <h2 className="text-2xl font-bold text-[#FAA24E] mb-4">Você já tem um bom conteúdo.</h2>

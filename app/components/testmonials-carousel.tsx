@@ -57,7 +57,7 @@ export default function TestimonialsCarousel() {
     },
   ];
 
-  const autoplay = useRef(Autoplay({ delay: 1000, stopOnInteraction: false }));
+  const autoplay = useRef(Autoplay({ delay: 2500, stopOnInteraction: true }));
 
   return (
     <Carousel
