@@ -15,7 +15,7 @@ export default function TestimonialsCarousel() {
     {
       text: `"Quero agradecer e parabenizar a equipe da Ilumi pelo trabalho que vem sendo feito com as redes sociais. Vocês demonstram muito comprometimento, estão sempre abertas a novas ideias e prezam pela qualidade em cada detalhe, especialmente na edição dos vídeos. Gosto muito da forma dinâmica como conduzem as gravações, sempre buscando tornar mais leve e fluida a rotina de criação de conteúdo. Isso faz toda a diferença no resultado final. Sigamos juntos evoluindo!"`,
       name: "Elton Tibes",
-      role: "",
+      role: "Sócio Ponto Pronto e Mentor",
       photo: "/depoimentos/elton.jpg",
     },
     {
@@ -40,18 +40,18 @@ export default function TestimonialsCarousel() {
 
               Elas não apenas cuidam, elas sentem. E essa é a diferença que transforma trabalho em arte. Poder contar com essas fadas incríveis e talentosas é ter certeza de que cada detalhe do meu Instagram carrega verdade, autenticidade e propósito."`,
       name: "Anita Freire",
-      role: "",
+      role: "Empresária e Infroprodutora",
       photo: "/depoimentos/anita.jpg",
     },
         {
       text: `"A agência nos atende em todos os quesitos, o planejamento e criação de conteúdos é maravilhoso, era o maior problema que tinha com relação ao nosso MKT, desde que contratamos os serviços da Ilumi, nossa página cresceu e se desenvolveu e cresceu muito bem. Além de atenciosas, compreensivas e flexíveis. Sou muito grata pela parceria que temos firmado nesse quase um ano juntas."`,
-      name: "Zaze's Negócios Imobiliários",
-      role: "Gerente de E-commerce, TechWorld",
+      name: "Paloma Zaze's",
+      role: "Zaze's Negócios Imobiliários",
       photo: "/depoimentos/zazes.jpg",
     },
         {
       text: `"Eu amo trabalhar com a Ilumi, gosto da parceria, da rapidez, do profissionalismo e da leveza da equipe Ilumi."`,
-      name: "Zais ",
+      name: "Fabiana Martins",
       role: "Zais Semijoias",
       photo: "/depoimentos/zais.jpg",
     },
