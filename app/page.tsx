@@ -4,15 +4,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Users, Edit3, TrendingUp, Lightbulb, Target, MessageCircle, ArrowRight, Star, Focus, Send, Smartphone, Monitor, ChartGantt, Briefcase, BriefcaseBusiness, Paperclip, ChartSpline } from "lucide-react"
 import { Link as ScrollLink } from "react-scroll"
 
-const logos = [
-  { src: "/logo-alanza.png", alt: "Logo Alanza" },
-  { src: "/logo-ellius.png", alt: "Logo Ellius" },
-  { src: "/logo-keyla.png", alt: "Logo Keyla" },
-  { src: "/logo-rm.png", alt: "Logo RM" },
-  { src: "/logo-rodima.png", alt: "Logo Rodima" },
-  { src: "/logo-luciane.png", alt: "Logo Luciane" },
-  { src: "/logo-monkey.png", alt: "Logo Monkey" },
-]
+import { LogoCarousel } from "@/components/ui/logo-carousel"
 
 export default function Home() {
 
@@ -368,13 +360,7 @@ export default function Home() {
       <section id="portfolio" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
           {/* Grid de Logos à esquerda */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 justify-items-center">
-            {logos.map((logo, index) => (
-              <div key={index} className="flex items-center justify-center h-32 w-full">
-                <img src={logo.src} alt={logo.alt} className="h-24 w-auto object-contain" />
-              </div>
-            ))}
-          </div>
+          <LogoCarousel />
           {/* Texto à direita */}
           <div className="text-center md:text-left">
             <h2 className="text-4xl font-bold text-[#015C54] mb-4">Marcas que fazem parte do nosso Hub</h2>
@@ -397,7 +383,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us Section */}
-      {/* <section id="" className="py-20 bg-gradient-to-r from-[#015C54] to-[#068C88] relative overflow-hidden">
+      <section id="" className="py-20 bg-gradient-to-r from-[#015C54] to-[#068C88] relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-[#FC7306]/10 rounded-full animate-spin-slow"></div>
           <div className="absolute bottom-16 right-1/4 w-20 h-20 bg-white/10 rounded-full animate-pulse"></div>
@@ -406,53 +392,43 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-4">
-              Por que ter a <span className="font-bold text-[#FC7306]">Livin Hub Digital</span> cuidando das suas redes sociais?
-            </h2>
+             Por que escolher a <span className="font-bold text-[#FC7306]">Livin Hub Digital</span> para cuidar da sua marca nas redes sociais?</h2>
+              <p className="text-white/80 max-w-2xl mx-auto">
+                A Livin não é só uma agência. Somos um hub criativo e estratégico que entra de verdade no seu negócio para entender, construir e transformar.
+              </p>
+              <p className="text-white/80 mt-4 max-w-2xl mx-auto">
+                Enquanto você foca no que faz de melhor, nós cuidamos da presença digital da sua marca nas redes sociais ao branding, do conteúdo a estratégia com estratégia, consistência e criatividade.
+              </p>
             <ul className="max-w-2xl mx-auto flex flex-col gap-6 mt-6">
               <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#068C88]/20 transition-all duration-300">
                 <div className="flex items-center">
-                  <span className="text-[#FC7306] mr-3">•</span> Mais tempo para o que importa
+                  <span className="text-[#FC7306] mr-3">•</span> Criamos conteúdo que conecta, engaja e gera autoridade.
                 </div>
-                <span className="text-white/80 text-base font-normal mt-2 text-center">
-                  Enquanto cuidamos de toda a estratégia, produção e gestão, você foca no seu negócio.
-                </span>
               </li>
               <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#068C88]/20 transition-all duration-300">
                 <div className="flex items-center">
-                  <span className="text-[#FC7306] mr-3">•</span> Mais autoridade no mercado
+                  <span className="text-[#FC7306] mr-3">•</span> Unimos design, vídeo, eventos e performance num só ecossistema.
                 </div>
-                <span className="text-white/80 text-base font-normal mt-2 text-center">
-                  Conteúdo estratégico e profissional que fortalece sua marca e transmite confiança.
-                </span>
               </li>
               <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#068C88]/20 transition-all duration-300">
                 <div className="flex items-center">
-                  <span className="text-[#FC7306] mr-3">•</span> Mais consistência
+                  <span className="text-[#FC7306] mr-3">•</span> Planejamos ações com objetivos claros e mensuráveis.
                 </div>
-                <span className="text-white/80 text-base font-normal mt-2 text-center">
-                  Presença ativa e alinhada em todas as plataformas.
-                </span>
               </li>
               <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#068C88]/20 transition-all duration-300">
                 <div className="flex items-center">
-                  <span className="text-[#FC7306] mr-3">•</span> Mais engajamento
+                  <span className="text-[#FC7306] text-left mr-3">•</span> E, acima de tudo, atendemos pessoas com escuta ativa e soluções personalizadas.
                 </div>
-                <span className="text-white/80 text-base font-normal mt-2 text-center">
-                  Postagens e vídeos que geram conexão real com o seu público.
-                </span>
-              </li>
-              <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#068C88]/20 transition-all duration-300">
-                <div className="flex items-center">
-                  <span className="text-[#FC7306] mr-3">•</span> Mais estratégia
-                </div>
-                <span className="text-white/80 text-base font-normal mt-2 text-center">
-                  Ações planejadas para alcançar objetivos claros e mensuráveis.
-                </span>
               </li>
             </ul>
           </div>
+          <div className="text-center mb-16">
+            <h3 className="text-3xl font-bold text-[#FC7306] mb-4">
+              Já são mais de 300 marcas impactadas em 6 anos de atuação no Brasil e nos EUA. E a próxima pode ser a sua.
+            </h3>
+          </div>
         </div>
-      </section> */}
+      </section>
 
       
       {/* CTA Section */}
@@ -504,7 +480,7 @@ export default function Home() {
           <div className="grid md:grid-cols-4 gap-8">
             <div className="flex flex-col items-start">
               <img
-                src="/livin-logo-footer.png"
+                src="/livin-logo-branca.png"
                 alt="Livin Logo"
                 className="mb-2 w-32 h-auto"
               />
