@@ -5,6 +5,7 @@ import { Users, Edit3, TrendingUp, Lightbulb, Target, MessageCircle, ArrowRight,
 import { Link as ScrollLink } from "react-scroll"
 
 import { LogoCarousel } from "@/app/components/logo-carousel"
+import { TestimonialsCarousel } from "@/app/components/testmonials-carousel"
 
 export default function Home() {
 
@@ -148,7 +149,8 @@ export default function Home() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-4">O que nossos clientes dizem</h2>
           </div>
-          <div className="grid md:grid-cols-2 gap-12">
+          <TestimonialsCarousel />
+          {/* <div className="grid md:grid-cols-2 gap-12">
             <Card className="bg-white/10 border-white/20 backdrop-blur-sm hover:bg-white/15 transition-all duration-300 hover:scale-105">
               <CardContent className="p-8 text-white">
                 <div className="flex mb-4">
@@ -179,7 +181,7 @@ export default function Home() {
                 <div className="text-white/70">Diretor de Marketing</div>
               </CardContent>
             </Card>
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -395,34 +397,40 @@ export default function Home() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-4">
               Por que escolher a <span className="font-bold text-[#FC7306]">Livin Hub Digital</span> para cuidar da sua marca nas redes sociais?</h2>
-            <p className="text-white/80 max-w-2xl mx-auto">
-              A Livin não é só uma agência. Somos um hub criativo e estratégico que entra de verdade no seu negócio para entender, construir e transformar.
-            </p>
-            <p className="text-white/80 mt-4 max-w-2xl mx-auto">
-              Enquanto você foca no que faz de melhor, nós cuidamos da presença digital da sua marca nas redes sociais ao branding, do conteúdo a estratégia com estratégia, consistência e criatividade.
-            </p>
-            <ul className="max-w-2xl mx-auto flex flex-col gap-6 mt-6">
-              <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#068C88]/20 transition-all duration-300">
-                <div className="flex items-center">
-                  <span className="text-[#FC7306] mr-3">•</span> Criamos conteúdo que conecta, engaja e gera autoridade.
-                </div>
-              </li>
-              <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#068C88]/20 transition-all duration-300">
-                <div className="flex items-center">
-                  <span className="text-[#FC7306] mr-3">•</span> Unimos design, vídeo, eventos e performance num só ecossistema.
-                </div>
-              </li>
-              <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#068C88]/20 transition-all duration-300">
-                <div className="flex items-center">
-                  <span className="text-[#FC7306] mr-3">•</span> Planejamos ações com objetivos claros e mensuráveis.
-                </div>
-              </li>
-              <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#068C88]/20 transition-all duration-300">
-                <div className="flex items-center">
-                  <span className="text-[#FC7306] text-left mr-3">•</span> E, acima de tudo, atendemos pessoas com escuta ativa e soluções personalizadas.
-                </div>
-              </li>
-            </ul>
+          </div>
+          <div className="flex items-center text-center md:text-left mb-16">
+            <div className="space-y-2 max-w-2xl mx-auto md:mx-0">
+              <h2 className="text-white font-semibold font-xl">
+                A Livin não é só uma agência. Somos um hub criativo e estratégico que entra de verdade no seu negócio para entender, construir e transformar.
+              </h2>
+              <h2 className="text-white font-semibold font-xl">
+                Enquanto você foca no que faz de melhor, nós cuidamos da presença digital da sua marca nas redes sociais ao branding, do conteúdo a estratégia com estratégia, consistência e criatividade.
+              </h2>
+            </div>
+            <div>
+              <ul className="max-w-2xl mx-auto flex flex-col gap-6 mt-6">
+                <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#068C88]/20 transition-all duration-300">
+                  <div className="flex items-center">
+                    <span className="text-[#FC7306] mr-3">•</span> Criamos conteúdo que conecta, engaja e gera autoridade.
+                  </div>
+                </li>
+                <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#068C88]/20 transition-all duration-300">
+                  <div className="flex items-center">
+                    <span className="text-[#FC7306] mr-3">•</span> Unimos design, vídeo, eventos e performance num só ecossistema.
+                  </div>
+                </li>
+                <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#068C88]/20 transition-all duration-300">
+                  <div className="flex items-center">
+                    <span className="text-[#FC7306] mr-3">•</span> Planejamos ações com objetivos claros e mensuráveis.
+                  </div>
+                </li>
+                <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#068C88]/20 transition-all duration-300">
+                  <div className="flex items-center">
+                    <span className="text-[#FC7306] text-left mr-3">•</span> E, acima de tudo, atendemos pessoas com escuta ativa e soluções personalizadas.
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
           <div className="text-center mb-16">
             <h3 className="text-3xl font-bold text-white mb-4">
@@ -431,7 +439,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
 
       {/* CTA Section */}
       <section className="py-20 bg-white">
@@ -446,18 +453,18 @@ export default function Home() {
               <Button className="bg-[#FC7306] cursor-pointer hover:bg-[#FAA24E] hover:shadow-xl duration-300 transition-all text-base px-4 py-6 hover:scale-110">QUERO ESTRATÉGIA PARA O MEU NEGÓCIO <ArrowRight className="w-4 h-4" /></Button>
             </a>
           </div>
-          <div className="flex justify-center gap-4 justify-self-end">
+          <div className="flex flex-col justify-center gap-2 justify-self-end">
             <img
               src="/CTA-BRUNA.JPG"
               alt="Equipe Livin Hub Digital"
-              className="rounded-3xl shadow-2xl w-full max-w-md object-cover"
+              className="rounded-3xl shadow-xl w-full max-w-md object-cover"
             />
-            <div className="flex flex-col justify-end">
+            <div className="flex justify-between">
               <div className="text-left">
                 <p className="text-1lg font-base">Bruna de Bem</p>
                 <p className="text-1sm font-bold text-[#FAA24E]">Estrategista Digital</p>
               </div>
-              <div className="text-left mt-4">
+              <div className="text-left">
                 <p className="text-2sm font-base">Livin Hub Digital</p>
                 <p className="text-1sm font-bold text-[#068C88]">Founder</p>
               </div>
@@ -506,7 +513,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-
+      {/*  */}
+      
       {/* Footer */}
       <footer className="bg-black text-white py-16">
         <div className="max-w-7xl mx-auto px-6">
