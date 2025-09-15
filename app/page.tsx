@@ -393,40 +393,40 @@ export default function Home() {
             <h2 className="text-4xl font-bold text-white mb-4">
               Por que escolher a <span className="font-bold text-[#FC7306]">Livin Hub Digital</span> para cuidar da sua marca nas redes sociais?</h2>
           </div>
-          <div className="flex items-center text-center md:text-left mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 items-center text-center md:text-left mb-16 gap-8">
             <div className="space-y-2 max-w-2xl mx-auto md:mx-0">
               <h2 className="text-white font-semibold font-xl">
-                A Livin não é só uma agência. Somos um hub criativo e estratégico que entra de verdade no seu negócio para entender, construir e transformar.
+              A Livin não é só uma agência. Somos um hub criativo e estratégico que entra de verdade no seu negócio para entender, construir e transformar.
               </h2>
               <h2 className="text-white font-semibold font-xl">
-                Enquanto você foca no que faz de melhor, nós cuidamos da presença digital da sua marca nas redes sociais ao branding, do conteúdo a estratégia com estratégia, consistência e criatividade.
+              Enquanto você foca no que faz de melhor, nós cuidamos da presença digital da sua marca nas redes sociais ao branding, do conteúdo a estratégia com estratégia, consistência e criatividade.
               </h2>
             </div>
             <div>
               <ul className="max-w-2xl mx-auto flex flex-col gap-6 mt-6">
-                <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#068C88]/20 transition-all duration-300">
-                  <div className="flex items-center">
-                    <span className="text-[#FC7306] mr-3">•</span> Criamos conteúdo que conecta, engaja e gera autoridade.
-                  </div>
-                </li>
-                <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#068C88]/20 transition-all duration-300">
-                  <div className="flex items-center">
-                    <span className="text-[#FC7306] mr-3">•</span> Unimos design, vídeo, eventos e performance num só ecossistema.
-                  </div>
-                </li>
-                <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#068C88]/20 transition-all duration-300">
-                  <div className="flex items-center">
-                    <span className="text-[#FC7306] mr-3">•</span> Planejamos ações com objetivos claros e mensuráveis.
-                  </div>
-                </li>
-                <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#068C88]/20 transition-all duration-300">
-                  <div className="flex items-center">
-                    <span className="text-[#FC7306] text-left mr-3">•</span> E, acima de tudo, atendemos pessoas com escuta ativa e soluções personalizadas.
-                  </div>
-                </li>
+              <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#068C88]/20 transition-all duration-300">
+                <div className="flex items-center">
+                <span className="text-[#FC7306] mr-3">•</span> Criamos conteúdo que conecta, engaja e gera autoridade.
+                </div>
+              </li>
+              <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#068C88]/20 transition-all duration-300">
+                <div className="flex items-center">
+                <span className="text-[#FC7306] mr-3">•</span> Unimos design, vídeo, eventos e performance num só ecossistema.
+                </div>
+              </li>
+              <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#068C88]/20 transition-all duration-300">
+                <div className="flex items-center">
+                <span className="text-[#FC7306] mr-3">•</span> Planejamos ações com objetivos claros e mensuráveis.
+                </div>
+              </li>
+              <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#068C88]/20 transition-all duration-300">
+                <div className="flex items-center">
+                <span className="text-[#FC7306] text-left mr-3">•</span> E, acima de tudo, atendemos pessoas com escuta ativa e soluções personalizadas.
+                </div>
+              </li>
               </ul>
             </div>
-          </div>
+            </div>
           <div className="text-center mb-16">
             <h3 className="text-3xl font-bold text-white mb-4">
               Já são mais de 300 marcas impactadas em 6 anos de atuação no Brasil e nos EUA. E a próxima pode ser a sua.
