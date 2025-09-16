@@ -55,7 +55,7 @@ export default function Home() {
               Feedbacks
             </ScrollLink>
             <ScrollLink
-              to="why-choose-us"
+              to="why-livin"
               smooth={true}
               duration={1200}
               offset={-80}
@@ -381,8 +381,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
-      <section id="why-choose-us" className="py-20 bg-gradient-to-r from-black via-[#1a0e00] to-[#2b1200] relative overflow-hidden">
+      {/* Why Livin Section */}
+      <section id="why-livin" className="py-20 bg-gradient-to-r from-black via-[#1a0e00] to-[#2b1200] relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-[#FC7306]/10 rounded-full animate-spin-slow"></div>
           <div className="absolute bottom-16 right-1/4 w-20 h-20 bg-white/10 rounded-full animate-pulse"></div>
