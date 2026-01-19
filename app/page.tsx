@@ -115,9 +115,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
           <div className="flex justify-center items-center">
             <img
-              src="/pessoal-livin-hub.jpg"
+              src="/equipe_livin.jpg"
               alt="Equipe Livin Hub Digital"
-              className="rounded-3xl shadow-2xl w-full max-w-md object-cover"
+              className="rounded-3xl shadow-2xl w-full max-w-lg object-cover"
             />
           </div>
           {/* Texto à direita */}
