@@ -282,7 +282,7 @@ export default function Home() {
                 Registramos seu evento com um olhar estratégico. Produzimos fotos e vídeos em tempo real (stories, reels, bastidores e highlights) que conectam e ampliam seu alcance. Com equipamentos profissionais, incluindo drone, e edição ágil, você publica no mesmo dia e mantém a audiência aquecida.
               </p>
               <a
-                href="https://instagram.com/livinstorymakers"
+                href="https://instagram.com/livinhubdigital"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block px-6 py-3 rounded-full font-semibold text-white bg-[#FC7306] hover:bg-[#FAA24E] transition-all duration-300 shadow-lg hover:scale-105"
@@ -581,7 +581,7 @@ export default function Home() {
                 <li>+55 (48) 99860-4665</li>
                 <li className="pt-2">
                   <div className="flex space-x-3">
-                    <a href="https://instagram.com/livinstorymakers" className="hover:text-[#068C88] transition-all duration-300 hover:scale-110">
+                    <a href="https://instagram.com/livinhubdigital" className="hover:text-[#068C88] transition-all duration-300 hover:scale-110">
                       Instagram
                     </a>
                   </div>
