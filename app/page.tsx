@@ -15,7 +15,7 @@ export default function Home() {
       <header className="absolute top-0 left-0 right-0 z-50 px-6 py-4">
         <nav className="flex items-center justify-between max-w-7xl mx-auto">
           <div className="hidden sm:block w-24 sm:w-16 md:w-20 lg:w-26 xl:w-32">
-            <img src="/livin-logo-branca.png" alt="livin logo branca" className="w-full h-auto" />
+            <img src="/livin-logotipo-white.svg" alt="Livin Hub Digital" className="w-full h-auto" />
           </div>
           <div className="hidden md:flex items-center space-x-8 text-white text-md">
             <ScrollLink
@@ -23,7 +23,7 @@ export default function Home() {
               smooth={true}
               duration={1200}
               offset={-80}
-              className="hover:text-[#068C88] transition-all duration-300 hover:scale-105 cursor-pointer"
+              className="hover:text-[#227bed] transition-all duration-300 hover:scale-105 cursor-pointer"
             >
               Quem somos nós
             </ScrollLink>
@@ -32,7 +32,7 @@ export default function Home() {
               smooth={true}
               duration={1200}
               offset={-80}
-              className="hover:text-[#068C88] transition-all duration-300 hover:scale-105 cursor-pointer"
+              className="hover:text-[#227bed] transition-all duration-300 hover:scale-105 cursor-pointer"
             >
               Serviços
             </ScrollLink>
@@ -41,7 +41,7 @@ export default function Home() {
               smooth={true}
               duration={1200}
               offset={-80}
-              className="hover:text-[#068C88] transition-all duration-300 hover:scale-105 cursor-pointer"
+              className="hover:text-[#227bed] transition-all duration-300 hover:scale-105 cursor-pointer"
             >
               Portfólio
             </ScrollLink>
@@ -50,7 +50,7 @@ export default function Home() {
               smooth={true}
               duration={1200}
               offset={-80}
-              className="hover:text-[#068C88] transition-all duration-300 hover:scale-105 cursor-pointer"
+              className="hover:text-[#227bed] transition-all duration-300 hover:scale-105 cursor-pointer"
             >
               Feedbacks
             </ScrollLink>
@@ -59,7 +59,7 @@ export default function Home() {
               smooth={true}
               duration={1200}
               offset={-80}
-              className="hover:text-[#068C88] transition-all duration-300 hover:scale-105 cursor-pointer"
+              className="hover:text-[#227bed] transition-all duration-300 hover:scale-105 cursor-pointer"
             >
               Por que a Livin?
             </ScrollLink>
@@ -68,7 +68,7 @@ export default function Home() {
               smooth={true}
               duration={1200}
               offset={-80}
-              className="hover:text-[#068C88] transition-all duration-300 hover:scale-105 cursor-pointer"
+              className="hover:text-[#227bed] transition-all duration-300 hover:scale-105 cursor-pointer"
             >
               Contato
             </ScrollLink>
@@ -83,12 +83,12 @@ export default function Home() {
         style={{ backgroundImage: "url('/hero.jpg')" }}
       >
         {/* Overlay com gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#000000] via-[#FAA24E]/20 to-[#000000]"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#000000] via-[#227bed]/20 to-[#000000]"></div>
 
         {/* Shapes animados */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-[#FC7306]/10 rounded-full animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-24 h-24 bg-[#FAA24E]/10 rounded-full animate-bounce"></div>
+          <div className="absolute top-20 left-10 w-32 h-32 bg-[#005cc1]/10 rounded-full animate-pulse"></div>
+          <div className="absolute bottom-20 right-10 w-24 h-24 bg-[#227bed]/10 rounded-full animate-bounce"></div>
           <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-white/5 rounded-full animate-ping"></div>
         </div>
 
@@ -97,12 +97,12 @@ export default function Home() {
           <div className="text-white animate-fade-in-up">
             <h1 className="text-5xl lg:text-7xl font-bold mb-8 leading-small">
               Somos o hub entre você e o{" "}
-              <span className="playfair text-[#FC7306] animate-pulse">digital.</span>
+              <span className="playfair text-[#d8f700] animate-pulse">digital.</span>
             </h1>
             <p className="text-1xl mb-8 text-white/80 max-w-md">
               Especialistas em Gestão de Redes Sociais e Cobertura de Eventos
             </p>
-            <Button className="bg-[#FC7306] hover:bg-[#FAA24E] cursor-pointer text-white px-8 py-5 rounded-full text-base font-medium group transition-all duration-300 hover:scale-105 hover:shadow-lg">
+            <Button className="bg-[#005cc1] hover:bg-[#227bed] cursor-pointer text-white px-8 py-5 rounded-full text-base font-medium group transition-all duration-300 hover:scale-105 hover:shadow-lg">
               QUERO FAZER PARTE DO HUB
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
             </Button>
@@ -127,7 +127,7 @@ export default function Home() {
               Nascemos em 2019 como Agência Ilumi, e desde o início acreditamos que estar no digital é muito mais que postar nas redes sociais. É entender o negócio do cliente, falar a sua língua e se tornar parte da sua jornada.
               Em seis anos, atendemos mais de 300 marcas no Brasil e nos Estados Unidos. Crescemos, expandimos e descobrimos que o que fazemos vai muito além de ser “apenas” uma agência.
               <br /><br />
-              Hoje, como <span className="font-bold text-[#015C54]">Livin Hub Digital</span>, assumimos nossa verdadeira essência: ser o ponto central que conecta estratégia, conteúdo, branding, design, tráfego e eventos em um só lugar — o seu hub digital.
+              Hoje, como <span className="font-bold text-[#005cc1]">Livin Hub Digital</span>, assumimos nossa verdadeira essência: ser o ponto central que conecta estratégia, conteúdo, branding, design, tráfego e eventos em um só lugar — o seu hub digital.
             </p>
           </div>
         </div>
@@ -135,27 +135,27 @@ export default function Home() {
 
 
       {/* Stats Section */}
-      <section id="feedbacks" className="py-20 bg-gradient-to-r from-black via-[#1a0e00] to-[#2b1200] relative overflow-hidden">        
+      <section id="feedbacks" className="py-20 bg-gradient-to-r from-black via-[#001a3d] to-[#012f63] relative overflow-hidden">        
         <div className="absolute inset-0">
           <div className="absolute top-10 left-10 w-20 h-20 bg-white/5 rounded-full animate-pulse"></div>
-          <div className="absolute bottom-10 right-10 w-16 h-16 bg-[#FC7306]/10 rounded-full animate-bounce"></div>
+          <div className="absolute bottom-10 right-10 w-16 h-16 bg-[#005cc1]/10 rounded-full animate-bounce"></div>
         </div>
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid md:grid-cols-3 gap-8 text-center text-white">
             <div className="group cursor-pointer hover:scale-105 transition-transform duration-300">
-              <div className="text-5xl font-bold text-[#FC7306] mb-2 group-hover:text-[#FAA24E] transition-colors duration-300">
+              <div className="text-5xl font-bold text-[#d8f700] mb-2 group-hover:text-[#227bed] transition-colors duration-300">
                 +300
               </div>
               <p className="text-white/80 group-hover:text-white transition-colors duration-300">Empresas transformadas</p>
             </div>
             <div className="group cursor-pointer hover:scale-105 transition-transform duration-300">
-              <div className="text-5xl font-bold text-[#FC7306] mb-2 group-hover:text-[#FAA24E] transition-colors duration-300">
+              <div className="text-5xl font-bold text-[#d8f700] mb-2 group-hover:text-[#227bed] transition-colors duration-300">
                 +6
               </div>
               <p className="text-white/80 group-hover:text-white transition-colors duration-300">Anos de mercado</p>
             </div>
             <div className="group cursor-pointer hover:scale-105 transition-transform duration-300">
-              <div className="text-5xl font-bold text-[#FC7306] mb-2 group-hover:text-[#FAA24E] transition-colors duration-300">
+              <div className="text-5xl font-bold text-[#d8f700] mb-2 group-hover:text-[#227bed] transition-colors duration-300">
                 Presença
               </div>
               <p className="text-white/80 group-hover:text-white transition-colors duration-300">
@@ -167,9 +167,9 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-gradient-to-r from-black via-[#1a0e00] to-[#2b1200] relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-r from-black via-[#001a3d] to-[#012f63] relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute top-20 right-20 w-24 h-24 bg-[#FC7306]/5 rounded-full animate-pulse"></div>
+          <div className="absolute top-20 right-20 w-24 h-24 bg-[#005cc1]/5 rounded-full animate-pulse"></div>
           <div className="absolute bottom-20 left-20 w-32 h-32 bg-white/5 rounded-full animate-bounce"></div>
         </div>
         <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -192,10 +192,10 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group">
               <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-[#FC7306]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#FC7306]/20 group-hover:scale-110 transition-all duration-300">
-                  <Lightbulb className="w-8 h-8 text-[#FC7306] group-hover:scale-110 transition-transform duration-300" />
+                <div className="w-16 h-16 bg-[#005cc1]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#005cc1]/20 group-hover:scale-110 transition-all duration-300">
+                  <Lightbulb className="w-8 h-8 text-[#005cc1] group-hover:scale-110 transition-transform duration-300" />
                 </div>
-                <h3 className="text-xl font-bold text-[#000000] mb-4 group-hover:text-[#068C88] transition-colors duration-300">
+                <h3 className="text-xl font-bold text-[#000000] mb-4 group-hover:text-[#227bed] transition-colors duration-300">
                   Estratégia Integrada
                 </h3>
                 <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
@@ -205,10 +205,10 @@ export default function Home() {
             </Card>
             <Card className="border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group">
               <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-[#FC7306]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#FC7306]/20 group-hover:scale-110 transition-all duration-300">
-                  <MessageCircle className="w-8 h-8 text-[#FC7306] group-hover:scale-110 transition-transform duration-300" />
+                <div className="w-16 h-16 bg-[#005cc1]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#005cc1]/20 group-hover:scale-110 transition-all duration-300">
+                  <MessageCircle className="w-8 h-8 text-[#005cc1] group-hover:scale-110 transition-transform duration-300" />
                 </div>
-                <h3 className="text-xl font-bold text-[#000000] mb-4 group-hover:text-[#068C88] transition-colors duration-300">
+                <h3 className="text-xl font-bold text-[#000000] mb-4 group-hover:text-[#227bed] transition-colors duration-300">
                   Atendimento humano
                 </h3>
                 <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
@@ -218,10 +218,10 @@ export default function Home() {
             </Card>
             <Card className="border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group">
               <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-[#FC7306]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#FC7306]/20 group-hover:scale-110 transition-all duration-300">
-                  <Target className="w-8 h-8 text-[#FC7306] group-hover:scale-110 transition-transform duration-300" />
+                <div className="w-16 h-16 bg-[#005cc1]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#005cc1]/20 group-hover:scale-110 transition-all duration-300">
+                  <Target className="w-8 h-8 text-[#005cc1] group-hover:scale-110 transition-transform duration-300" />
                 </div>
-                <h3 className="text-xl font-bold text-[#000000] mb-4 group-hover:text-[#068C88] transition-colors duration-300">
+                <h3 className="text-xl font-bold text-[#000000] mb-4 group-hover:text-[#227bed] transition-colors duration-300">
                   Experiência e resultado
                 </h3>
                 <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
@@ -234,7 +234,7 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-10 bg-gradient-to-r from-black via-[#1a0e00] to-[#2b1200] relative bg-cover bg-center overflow-hidden">
+      <section id="services" className="py-10 bg-gradient-to-r from-black via-[#001a3d] to-[#012f63] relative bg-cover bg-center overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-4">Como a Livin pode te ajudar</h2>
@@ -246,10 +246,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8">
           <Card className="border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group cursor-pointer">
             <CardContent className="p-8 text-center">
-              <div className="w-16 h-16 bg-[#FC7306]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#FC7306]/20 group-hover:scale-110 transition-all duration-300">
-                <Users className="w-8 h-8 text-[#FC7306] group-hover:scale-110 transition-transform duration-300" />
+              <div className="w-16 h-16 bg-[#005cc1]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#005cc1]/20 group-hover:scale-110 transition-all duration-300">
+                <Users className="w-8 h-8 text-[#005cc1] group-hover:scale-110 transition-transform duration-300" />
               </div>
-              <h3 className="text-xl font-bold text-[#015C54] group-hover:text-[#068C88] transition-colors duration-300 mb-6">
+              <h3 className="text-xl font-bold text-[#005cc1] group-hover:text-[#227bed] transition-colors duration-300 mb-6">
                 Gestão de Redes Sociais
               </h3>
               <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
@@ -259,10 +259,10 @@ export default function Home() {
           </Card>
           <Card className="border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group cursor-pointer">
             <CardContent className="p-8 text-center">
-              <div className="w-16 h-16 bg-[#FC7306]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#FC7306]/20 group-hover:scale-110 transition-all duration-300">
-                <Focus className="w-8 h-8 text-[#FC7306] group-hover:scale-110 transition-transform duration-300" />
+              <div className="w-16 h-16 bg-[#005cc1]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#005cc1]/20 group-hover:scale-110 transition-all duration-300">
+                <Focus className="w-8 h-8 text-[#005cc1] group-hover:scale-110 transition-transform duration-300" />
               </div>
-              <h3 className="text-xl font-bold text-[#000000] group-hover:text-[#068C88] transition-colors duration-300 mb-6">
+              <h3 className="text-xl font-bold text-[#000000] group-hover:text-[#227bed] transition-colors duration-300 mb-6">
                 Fotografia e Audiovisual
               </h3>
               <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
@@ -272,10 +272,10 @@ export default function Home() {
           </Card>
           <Card className="border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group cursor-pointer">
             <CardContent className="p-8 text-center">
-              <div className="w-16 h-16 bg-[#FC7306]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#FC7306]/20 group-hover:scale-110 transition-all duration-300">
-                <Smartphone className="w-8 h-8 text-[#FC7306] group-hover:scale-110 transition-transform duration-300" />
+              <div className="w-16 h-16 bg-[#005cc1]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#005cc1]/20 group-hover:scale-110 transition-all duration-300">
+                <Smartphone className="w-8 h-8 text-[#005cc1] group-hover:scale-110 transition-transform duration-300" />
               </div>
-              <h3 className="text-xl font-bold text-[#000000] group-hover:text-[#068C88] transition-colors duration-300 mb-6">
+              <h3 className="text-xl font-bold text-[#000000] group-hover:text-[#227bed] transition-colors duration-300 mb-6">
                 Cobertura de Eventos & Storymaker
               </h3>
               <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300 mb-6">
@@ -285,7 +285,7 @@ export default function Home() {
                 href="https://instagram.com/livinhubdigital"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block px-6 py-3 rounded-full font-semibold text-white bg-[#FC7306] hover:bg-[#FAA24E] transition-all duration-300 shadow-lg hover:scale-105"
+                className="inline-block px-6 py-3 rounded-full font-semibold text-white bg-[#005cc1] hover:bg-[#227bed] transition-all duration-300 shadow-lg hover:scale-105"
                 style={{ textDecoration: "none" }}
               >
                 Veja nosso portfólio
@@ -294,60 +294,60 @@ export default function Home() {
           </Card>
           <Card className="border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group cursor-pointer">
             <CardContent className="p-8 text-center">
-              <div className="w-16 h-16 bg-[#FC7306]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#FC7306]/20 group-hover:scale-110 transition-all duration-300">
-                <Monitor className="w-8 h-8 text-[#FC7306] group-hover:scale-110 transition-transform duration-300" />
+              <div className="w-16 h-16 bg-[#005cc1]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#005cc1]/20 group-hover:scale-110 transition-all duration-300">
+                <Monitor className="w-8 h-8 text-[#005cc1] group-hover:scale-110 transition-transform duration-300" />
               </div>
-              <h3 className="text-xl font-bold text-[#000000] group-hover:text-[#068C88] transition-colors duration-300">
+              <h3 className="text-xl font-bold text-[#000000] group-hover:text-[#227bed] transition-colors duration-300">
                 Identidade Visual
               </h3>
             </CardContent>
           </Card>
           <Card className="border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group cursor-pointer">
             <CardContent className="p-8 text-center">
-              <div className="w-16 h-16 bg-[#FC7306]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#FC7306]/20 group-hover:scale-110 transition-all duration-300">
-                <ChartGantt className="w-8 h-8 text-[#FC7306] group-hover:scale-110 transition-transform duration-300" />
+              <div className="w-16 h-16 bg-[#005cc1]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#005cc1]/20 group-hover:scale-110 transition-all duration-300">
+                <ChartGantt className="w-8 h-8 text-[#005cc1] group-hover:scale-110 transition-transform duration-300" />
               </div>
-              <h3 className="text-xl font-bold text-[#000000] group-hover:text-[#068C88] transition-colors duration-300">
+              <h3 className="text-xl font-bold text-[#000000] group-hover:text-[#227bed] transition-colors duration-300">
                 Diagnóstico de Perfil
               </h3>
             </CardContent>
           </Card>
           <Card className="border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group cursor-pointer">
             <CardContent className="p-8 text-center">
-              <div className="w-16 h-16 bg-[#FC7306]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#FC7306]/20 group-hover:scale-110 transition-all duration-300">
-                <BriefcaseBusiness className="w-8 h-8 text-[#FC7306] group-hover:scale-110 transition-transform duration-300" />
+              <div className="w-16 h-16 bg-[#005cc1]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#005cc1]/20 group-hover:scale-110 transition-all duration-300">
+                <BriefcaseBusiness className="w-8 h-8 text-[#005cc1] group-hover:scale-110 transition-transform duration-300" />
               </div>
-              <h3 className="text-xl font-bold text-[#000000] group-hover:text-[#068C88] transition-colors duration-300">
+              <h3 className="text-xl font-bold text-[#000000] group-hover:text-[#227bed] transition-colors duration-300">
                 Google Meu Negócio
               </h3>
             </CardContent>
           </Card>
           <Card className="border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group cursor-pointer">
             <CardContent className="p-8 text-center">
-              <div className="w-16 h-16 bg-[#FC7306]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#FC7306]/20 group-hover:scale-110 transition-all duration-300">
-                <Paperclip className="w-8 h-8 text-[#FC7306] group-hover:scale-110 transition-transform duration-300" />
+              <div className="w-16 h-16 bg-[#005cc1]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#005cc1]/20 group-hover:scale-110 transition-all duration-300">
+                <Paperclip className="w-8 h-8 text-[#005cc1] group-hover:scale-110 transition-transform duration-300" />
               </div>
-              <h3 className="text-xl font-bold text-[#000000] group-hover:text-[#068C88] transition-colors duration-300">
+              <h3 className="text-xl font-bold text-[#000000] group-hover:text-[#227bed] transition-colors duration-300">
                 Papelaria Criativa
               </h3>
             </CardContent>
           </Card>
           <Card className="border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group cursor-pointer">
             <CardContent className="p-8 text-center">
-              <div className="w-16 h-16 bg-[#FC7306]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#FC7306]/20 group-hover:scale-110 transition-all duration-300">
-                <ChartSpline className="w-8 h-8 text-[#FC7306] group-hover:scale-110 transition-transform duration-300" />
+              <div className="w-16 h-16 bg-[#005cc1]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#005cc1]/20 group-hover:scale-110 transition-all duration-300">
+                <ChartSpline className="w-8 h-8 text-[#005cc1] group-hover:scale-110 transition-transform duration-300" />
               </div>
-              <h3 className="text-xl font-bold text-[#000000] group-hover:text-[#068C88] transition-colors duration-300">
+              <h3 className="text-xl font-bold text-[#000000] group-hover:text-[#227bed] transition-colors duration-300">
                 Tráfego Pago
               </h3>
             </CardContent>
           </Card>
           <Card className="border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group cursor-pointer">
             <CardContent className="p-8 text-center">
-              <div className="w-16 h-16 bg-[#FC7306]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#FC7306]/20 group-hover:scale-110 transition-all duration-300">
-                <Lightbulb className="w-8 h-8 text-[#FC7306] group-hover:scale-110 transition-transform duration-300" />
+              <div className="w-16 h-16 bg-[#005cc1]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#005cc1]/20 group-hover:scale-110 transition-all duration-300">
+                <Lightbulb className="w-8 h-8 text-[#005cc1] group-hover:scale-110 transition-transform duration-300" />
               </div>
-              <h3 className="text-xl font-bold text-[#000000] group-hover:text-[#068C88] transition-colors duration-300">
+              <h3 className="text-xl font-bold text-[#000000] group-hover:text-[#227bed] transition-colors duration-300">
                 Criação de site e landing page
               </h3>
             </CardContent>
@@ -365,10 +365,10 @@ export default function Home() {
             <h2 className="text-4xl font-bold text-[#000000] mb-4">Marcas que fazem parte do nosso Hub</h2>
             <div className="space-y-4 text-gray-600">
               <p>
-                Temos orgulho de conectar nossa <span className="font-bold text-[#015C54]">criatividade</span> e <span className="font-bold text-[#015C54]">estratégia</span> a empresas que entendem o poder de uma presença digital autêntica.
+                Temos orgulho de conectar nossa <span className="font-bold text-[#005cc1]">criatividade</span> e <span className="font-bold text-[#005cc1]">estratégia</span> a empresas que entendem o poder de uma presença digital autêntica.
               </p>
               <p>
-                Valorizamos marcas que usam as redes para criar <span className="font-bold text-[#FC7306]">conexões reais</span>, fortalecer autoridade e gerar impacto.
+                Valorizamos marcas que usam as redes para criar <span className="font-bold text-[#005cc1]">conexões reais</span>, fortalecer autoridade e gerar impacto.
               </p>
               <p>
                 Nossos clientes confiam em soluções pensadas sob medida, alinhadas às suas metas e à identidade única de cada negócio.
@@ -382,16 +382,16 @@ export default function Home() {
       </section>
 
       {/* Why Livin Section */}
-      <section id="why-livin" className="py-20 bg-gradient-to-r from-black via-[#1a0e00] to-[#2b1200] relative overflow-hidden">
+      <section id="why-livin" className="py-20 bg-gradient-to-r from-black via-[#001a3d] to-[#012f63] relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-[#FC7306]/10 rounded-full animate-spin-slow"></div>
+          <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-[#005cc1]/10 rounded-full animate-spin-slow"></div>
           <div className="absolute bottom-16 right-1/4 w-20 h-20 bg-white/10 rounded-full animate-pulse"></div>
-          <div className="absolute top-10 right-1/3 w-16 h-16 bg-[#068C88]/10 rounded-full animate-ping"></div>
+          <div className="absolute top-10 right-1/3 w-16 h-16 bg-[#227bed]/10 rounded-full animate-ping"></div>
         </div>
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-4">
-              Por que escolher a <span className="font-bold text-[#FC7306]">Livin Hub Digital</span> para cuidar da sua marca nas redes sociais?</h2>
+              Por que escolher a <span className="font-bold text-[#005cc1]">Livin Hub Digital</span> para cuidar da sua marca nas redes sociais?</h2>
           </div>
             <div className="grid grid-cols-1 md:grid-cols-2 items-center text-center md:text-left mb-16 gap-8">
             <div className="space-y-2 max-w-2xl mx-auto md:mx-0">
@@ -404,24 +404,24 @@ export default function Home() {
             </div>
             <div>
               <ul className="max-w-2xl mx-auto flex flex-col gap-6 mt-6">
-              <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#068C88]/20 transition-all duration-300">
+              <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#227bed]/20 transition-all duration-300">
                 <div className="flex items-center">
-                <span className="text-[#FC7306] mr-3">•</span> Criamos conteúdo que conecta, engaja e gera autoridade.
+                <span className="text-[#d8f700] mr-3">•</span> Criamos conteúdo que conecta, engaja e gera autoridade.
                 </div>
               </li>
-              <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#068C88]/20 transition-all duration-300">
+              <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#227bed]/20 transition-all duration-300">
                 <div className="flex items-center">
-                <span className="text-[#FC7306] mr-3">•</span> Unimos design, vídeo, eventos e performance num só ecossistema.
+                <span className="text-[#d8f700] mr-3">•</span> Unimos design, vídeo, eventos e performance num só ecossistema.
                 </div>
               </li>
-              <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#068C88]/20 transition-all duration-300">
+              <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#227bed]/20 transition-all duration-300">
                 <div className="flex items-center">
-                <span className="text-[#FC7306] mr-3">•</span> Planejamos ações com objetivos claros e mensuráveis.
+                <span className="text-[#d8f700] mr-3">•</span> Planejamos ações com objetivos claros e mensuráveis.
                 </div>
               </li>
-              <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#068C88]/20 transition-all duration-300">
+              <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#227bed]/20 transition-all duration-300">
                 <div className="flex items-center">
-                <span className="text-[#FC7306] text-left mr-3">•</span> E, acima de tudo, atendemos pessoas com escuta ativa e soluções personalizadas.
+                <span className="text-[#d8f700] text-left mr-3">•</span> E, acima de tudo, atendemos pessoas com escuta ativa e soluções personalizadas.
                 </div>
               </li>
               </ul>
@@ -439,13 +439,13 @@ export default function Home() {
       <section id="contact-us" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-2 grid md:grid-cols-2 gap-20 items-center">
           <div className="text-center md:text-left mb-16 md:mb-0">
-            <h2 className="text-2xl font-bold text-[#FAA24E] mb-4">Você já tem um bom conteúdo.</h2>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-[#015C54] to-[#068C88] bg-clip-text text-transparent mb-6">Agora é hora de ter uma estratégia que faça tudo isso vender.</h1>
+            <h2 className="text-2xl font-bold text-[#227bed] mb-4">Você já tem um bom conteúdo.</h2>
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-[#005cc1] to-[#227bed] bg-clip-text text-transparent mb-6">Agora é hora de ter uma estratégia que faça tudo isso vender.</h1>
             <p className="text-gray-600 max-w-2xl mx-auto md:mx-0 mb-12">
               Seja você uma empresa local, uma marca pessoal ou um pequeno negócio em crescimento, seu potencial digital merece um plano estratégico de verdade.
             </p>
             <a href="https://wa.me/5548998604665?text=Ol%C3%A1%2C%20quero%20estrat%C3%A9gia%20para%20o%20meu%20neg%C3%B3cio">
-              <Button className="bg-[#FC7306] cursor-pointer hover:bg-[#FAA24E] hover:shadow-xl duration-300 transition-all text-base px-4 py-6 hover:scale-110">QUERO ESTRATÉGIA PARA O MEU NEGÓCIO <ArrowRight className="w-4 h-4" /></Button>
+              <Button className="bg-[#005cc1] cursor-pointer hover:bg-[#227bed] hover:shadow-xl duration-300 transition-all text-base px-4 py-6 hover:scale-110">QUERO ESTRATÉGIA PARA O MEU NEGÓCIO <ArrowRight className="w-4 h-4" /></Button>
             </a>
           </div>
           <div className="flex flex-col justify-center gap-2 justify-self-end">
@@ -457,21 +457,21 @@ export default function Home() {
             <div className="flex justify-between">
               <div className="text-left">
                 <p className="text-1lg font-base">Bruna de Bem</p>
-                <p className="text-1sm font-bold text-[#FAA24E]">Estrategista Digital</p>
+                <p className="text-1sm font-bold text-[#227bed]">Estrategista Digital</p>
               </div>
               <div className="text-left">
                 <p className="text-2sm font-base">Livin Hub Digital</p>
-                <p className="text-1sm font-bold text-[#068C88]">Founder</p>
+                <p className="text-1sm font-bold text-[#227bed]">Founder</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-r from-black via-[#1a0e00] to-[#2b1200] relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-r from-black via-[#001a3d] to-[#012f63] relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-10 left-1/4 w-32 h-32 bg-white/5 rounded-full animate-pulse"></div>
-          <div className="absolute bottom-10 right-1/4 w-24 h-24 bg-[#FC7306]/10 rounded-full animate-bounce"></div>
+          <div className="absolute bottom-10 right-1/4 w-24 h-24 bg-[#005cc1]/10 rounded-full animate-bounce"></div>
         </div>
         <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
           <h2 className="text-4xl font-bold text-white mb-6">Pronto para dar o próximo passo no digital?</h2>
@@ -482,7 +482,7 @@ export default function Home() {
             <a href="https://wa.me/5548998604665?text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20servi%C3%A7os%20da%20Livin%20Hub%20Digital" target="_blank" rel="noopener noreferrer">
               <Button
                 variant="outline"
-                className="border-white text-white hover:bg-white hover:text-[#015C54] px-8 py-3 rounded-full text-base font-medium bg-transparent transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
+                className="border-white text-white hover:bg-white hover:text-[#005cc1] px-8 py-3 rounded-full text-base font-medium bg-transparent transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
               >
                 Chame no WhatsApp<Send />
               </Button>
@@ -500,7 +500,7 @@ export default function Home() {
           <div className="flex justify-center mt-8">
             <a href="https://wa.me/5548998604665?text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20cobertura%20de%20evento%20e%20storymaker%20da%20Livin" target="_blank" rel="noopener noreferrer">
               <Button
-                className="bg-[#FC7306] hover:bg-[#FAA24E] text-white px-8 py-3 rounded-full text-base font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
+                className="bg-[#005cc1] hover:bg-[#227bed] text-white px-8 py-3 rounded-full text-base font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
               >
                 Garanta a sua data <ArrowRight className="w-4 h-4" />
               </Button>
@@ -515,8 +515,8 @@ export default function Home() {
           <div className="grid md:grid-cols-4 gap-8">
             <div className="flex flex-col items-start">
               <img
-                src="/livin-logo-branca.png"
-                alt="Livin Logo"
+                src="/livin-logotipo-white.svg"
+                alt="Livin Hub Digital"
                 className="mb-2 w-32 h-auto"
               />
               <p className="text-gray-400 text-sm mb-1">
@@ -528,22 +528,22 @@ export default function Home() {
               <h4 className="font-semibold mb-4">Links Rápidos</h4>
               <ul className="space-y-2 text-sm text-gray-400">
                 <li>
-                  <a href="#" className="hover:text-[#068C88] transition-all duration-300 hover:translate-x-1">
+                  <a href="#" className="hover:text-[#227bed] transition-all duration-300 hover:translate-x-1">
                     Início
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-[#068C88] transition-all duration-300 hover:translate-x-1">
+                  <a href="#" className="hover:text-[#227bed] transition-all duration-300 hover:translate-x-1">
                     Serviços
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-[#068C88] transition-all duration-300 hover:translate-x-1">
+                  <a href="#" className="hover:text-[#227bed] transition-all duration-300 hover:translate-x-1">
                     Portfólio
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-[#068C88] transition-all duration-300 hover:translate-x-1">
+                  <a href="#" className="hover:text-[#227bed] transition-all duration-300 hover:translate-x-1">
                     Contato
                   </a>
                 </li>
@@ -553,22 +553,22 @@ export default function Home() {
               <h4 className="font-semibold mb-4">Serviços</h4>
               <ul className="space-y-2 text-sm text-gray-400">
                 <li>
-                  <a href="#" className="hover:text-[#068C88] transition-all duration-300 hover:translate-x-1">
+                  <a href="#" className="hover:text-[#227bed] transition-all duration-300 hover:translate-x-1">
                     Gestão de Redes
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-[#068C88] transition-all duration-300 hover:translate-x-1">
+                  <a href="#" className="hover:text-[#227bed] transition-all duration-300 hover:translate-x-1">
                     Criação de Conteúdo
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-[#068C88] transition-all duration-300 hover:translate-x-1">
+                  <a href="#" className="hover:text-[#227bed] transition-all duration-300 hover:translate-x-1">
                     Estratégias de Crescimento
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-[#068C88] transition-all duration-300 hover:translate-x-1">
+                  <a href="#" className="hover:text-[#227bed] transition-all duration-300 hover:translate-x-1">
                     Consultoria
                   </a>
                 </li>
@@ -581,7 +581,7 @@ export default function Home() {
                 <li>+55 (48) 99860-4665</li>
                 <li className="pt-2">
                   <div className="flex space-x-3">
-                    <a href="https://instagram.com/livinhubdigital" className="hover:text-[#068C88] transition-all duration-300 hover:scale-110">
+                    <a href="https://instagram.com/livinhubdigital" className="hover:text-[#227bed] transition-all duration-300 hover:scale-110">
                       Instagram
                     </a>
                   </div>

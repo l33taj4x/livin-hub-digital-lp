@@ -77,7 +77,7 @@ export default function TestimonialsCarousel() {
                 {/* estrelas */}
                 <div className="flex mb-4">
                   {[...Array(5)].map((_, j) => (
-                    <Star key={j} className="w-4 h-4 text-[#FC7306] fill-current" />
+                    <Star key={j} className="w-4 h-4 text-[#d8f700] fill-current" />
                   ))}
                 </div>
 
@@ -89,7 +89,7 @@ export default function TestimonialsCarousel() {
                   <img
                     src={t.photo}
                     alt={t.name}
-                    className="w-12 h-12 rounded-full object-cover border-2 border-[#FC7306]/50"
+                    className="w-12 h-12 rounded-full object-cover border-2 border-[#227bed]/50"
                   />
                   <div>
                     <div className="font-semibold">{t.name}</div>
