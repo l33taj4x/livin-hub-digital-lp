@@ -1,374 +1,417 @@
 "use client"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Users, Lightbulb, Target, MessageCircle, ArrowRight, Star, Focus, Send, Smartphone, Monitor, ChartGantt, Briefcase, BriefcaseBusiness, Paperclip, ChartSpline } from "lucide-react"
-import { Link as ScrollLink } from "react-scroll"
+import {
+  Users,
+  Lightbulb,
+  Target,
+  MessageCircle,
+  ArrowRight,
+  Send,
+  Focus,
+  Smartphone,
+  Monitor,
+  ChartGantt,
+  BriefcaseBusiness,
+  Paperclip,
+  ChartSpline,
+  Rocket,
+  Camera,
+  CheckCircle2,
+} from "lucide-react"
+import { cn } from "@/lib/utils"
 
+import { SiteHeader } from "@/app/components/site-header"
+import { Reveal } from "@/app/components/reveal"
+import { CountUp } from "@/app/components/count-up"
 import { LogoCarousel } from "@/app/components/logo-carousel"
 import { TestimonialsCarousel } from "@/app/components/testmonials-carousel"
 
-export default function Home() {
+type IconType = React.ComponentType<{ className?: string }>
 
+/* ── Helpers de UI compartilhados ─────────────────────────────────────────── */
+
+function Eyebrow({
+  children,
+  tone = "blue",
+}: {
+  children: React.ReactNode
+  tone?: "blue" | "light"
+}) {
+  return (
+    <span
+      className={cn(
+        "mb-4 inline-block rounded-full px-4 py-1.5 text-sm font-semibold",
+        tone === "light"
+          ? "bg-white/10 text-brand-lime ring-1 ring-white/15"
+          : "bg-brand-blue/10 text-brand-blue"
+      )}
+    >
+      {children}
+    </span>
+  )
+}
+
+/** Blobs aurora suaves para o fundo das seções escuras. */
+function AuroraDark() {
+  return (
+    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+      <div className="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-brand-active/12 blur-3xl animate-aurora" />
+      <div className="absolute -bottom-32 right-0 h-80 w-80 rounded-full bg-brand-blue/12 blur-3xl animate-aurora [animation-delay:-7s]" />
+    </div>
+  )
+}
+
+/** Card claro (ícone + título + texto) — usado em "Por que a Livin". */
+function FeatureCard({
+  icon: Icon,
+  title,
+  children,
+}: {
+  icon: IconType
+  title: string
+  children: React.ReactNode
+}) {
+  return (
+    <div className="group relative overflow-hidden rounded-3xl bg-white p-8 shadow-xl ring-1 ring-black/5 transition-transform duration-300 hover:-translate-y-1">
+      <div
+        className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-brand-blue/10 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
+        aria-hidden="true"
+      />
+      <div className="relative">
+        <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-blue/10 ring-1 ring-brand-blue/15">
+          <Icon className="h-7 w-7 text-brand-blue" />
+        </div>
+        <h3 className="mb-3 text-xl font-bold text-brand-ink">{title}</h3>
+        <p className="text-gray-600">{children}</p>
+      </div>
+    </div>
+  )
+}
+
+/** Card de serviço em destaque (escuro), com CTA opcional. */
+function ServiceFeature({
+  icon: Icon,
+  title,
+  desc,
+  cta,
+}: {
+  icon: IconType
+  title: string
+  desc: string
+  cta?: { href: string; label: string }
+}) {
+  return (
+    <div className="group relative overflow-hidden rounded-3xl bg-white/[0.06] p-7 ring-1 ring-white/10 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.1] hover:ring-white/20">
+      <div
+        className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-brand-active/20 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
+        aria-hidden="true"
+      />
+      <div className="relative flex h-full flex-col">
+        <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 ring-1 ring-white/15">
+          <Icon className="h-6 w-6 text-white/90 transition-colors duration-300 group-hover:text-brand-lime" />
+        </div>
+        <h3 className="mb-3 text-xl font-bold text-white">{title}</h3>
+        <p className="mb-6 text-sm leading-relaxed text-white/70">{desc}</p>
+        {cta && (
+          <a className="mt-auto" href={cta.href} target="_blank" rel="noopener noreferrer">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-5 py-2.5 text-sm font-semibold text-white ring-1 ring-white/20 transition-all duration-300 hover:bg-brand-lime hover:text-brand-ink">
+              {cta.label}
+              <ArrowRight className="h-4 w-4" />
+            </span>
+          </a>
+        )}
+      </div>
+    </div>
+  )
+}
+
+/** Tile compacto de serviço (escuro) — ícone + título. */
+function ServiceTile({ icon: Icon, title }: { icon: IconType; title: string }) {
+  return (
+    <div className="group flex items-center gap-3 rounded-2xl bg-white/[0.05] p-4 ring-1 ring-white/10 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.1]">
+      <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/10 ring-1 ring-white/15">
+        <Icon className="h-5 w-5 text-white/90 transition-colors duration-300 group-hover:text-brand-lime" />
+      </div>
+      <span className="text-sm font-semibold text-white">{title}</span>
+    </div>
+  )
+}
+
+/* ── Dados ────────────────────────────────────────────────────────────────── */
+
+const stats: (
+  | { prefix: string; value: number; label: string }
+  | { text: string; label: string }
+)[] = [
+  { prefix: "+", value: 300, label: "Empresas transformadas" },
+  { prefix: "+", value: 6, label: "Anos de mercado" },
+  { text: "Presença", label: "Nacional e Internacional" },
+]
+
+const featuredServices: {
+  icon: IconType
+  title: string
+  desc: string
+  cta?: { href: string; label: string }
+}[] = [
+  {
+    icon: Users,
+    title: "Gestão de Redes Sociais",
+    desc: "Cuidamos de todo o processo das suas redes: planejamento estratégico, criação de conteúdo, design, legendas, agendamento e acompanhamento de resultados. Tudo para garantir que sua marca tenha uma presença consistente, profissional e alinhada aos seus objetivos.",
+  },
+  {
+    icon: Focus,
+    title: "Fotografia e Audiovisual",
+    desc: "Registramos fotos e vídeos profissionais para fortalecer a presença digital da sua marca. Trabalhamos com os melhores equipamentos, incluindo drone, para capturar ângulos únicos e transmitir a essência do seu negócio. Entregamos imagens e vídeos prontos para engajar, gerar conexão e contar histórias de forma estratégica.",
+  },
+  {
+    icon: Smartphone,
+    title: "Cobertura de Eventos & Storymaker",
+    desc: "Registramos seu evento com um olhar estratégico. Produzimos fotos e vídeos em tempo real (stories, reels, bastidores e highlights) que conectam e ampliam seu alcance. Com equipamentos profissionais, incluindo drone, e edição ágil, você publica no mesmo dia e mantém a audiência aquecida.",
+    cta: { href: "https://instagram.com/livinhubdigital", label: "Veja nosso portfólio" },
+  },
+]
+
+const otherServices: { icon: IconType; title: string }[] = [
+  { icon: Monitor, title: "Identidade Visual" },
+  { icon: ChartGantt, title: "Diagnóstico de Perfil" },
+  { icon: BriefcaseBusiness, title: "Google Meu Negócio" },
+  { icon: Paperclip, title: "Papelaria Criativa" },
+  { icon: ChartSpline, title: "Tráfego Pago" },
+  { icon: Lightbulb, title: "Criação de site e landing page" },
+]
+
+const whyChoose: { icon: IconType; title: string; desc: string }[] = [
+  {
+    icon: Lightbulb,
+    title: "Estratégia Integrada",
+    desc: "Somos um hub que conecta redes sociais, branding, design, vídeo, tráfego e eventos em um único ecossistema criativo.",
+  },
+  {
+    icon: MessageCircle,
+    title: "Atendimento humano",
+    desc: "Entramos no seu negócio para entender de verdade suas necessidades e criar soluções personalizadas.",
+  },
+  {
+    icon: Target,
+    title: "Experiência e resultado",
+    desc: "+300 marcas transformadas em 6 anos de atuação no Brasil e nos EUA, com entregas criativas e de alto nível.",
+  },
+]
+
+const whyLivinPoints = [
+  "Criamos conteúdo que conecta, engaja e gera autoridade.",
+  "Unimos design, vídeo, eventos e performance num só ecossistema.",
+  "Planejamos ações com objetivos claros e mensuráveis.",
+  "E, acima de tudo, atendemos pessoas com escuta ativa e soluções personalizadas.",
+]
+
+/* ── Página ───────────────────────────────────────────────────────────────── */
+
+export default function Home() {
   return (
     <div className="min-h-screen">
-      {/* Header */}
-      <header className="absolute top-0 left-0 right-0 z-50 px-6 py-4">
-        <nav className="flex items-center justify-between max-w-7xl mx-auto">
-          <div className="hidden sm:block w-24 sm:w-16 md:w-20 lg:w-26 xl:w-32">
-            <img src="/livin-logotipo-white.svg" alt="Livin Hub Digital" className="w-full h-auto" />
-          </div>
-          <div className="hidden md:flex items-center space-x-8 text-white text-md">
-            <ScrollLink
-              to="what-we-do"
-              smooth={true}
-              duration={1200}
-              offset={-80}
-              className="hover:text-[#227bed] transition-all duration-300 hover:scale-105 cursor-pointer"
-            >
-              Quem somos nós
-            </ScrollLink>
-            <ScrollLink
-              to="services"
-              smooth={true}
-              duration={1200}
-              offset={-80}
-              className="hover:text-[#227bed] transition-all duration-300 hover:scale-105 cursor-pointer"
-            >
-              Serviços
-            </ScrollLink>
-            <ScrollLink
-              to="portfolio"
-              smooth={true}
-              duration={1200}
-              offset={-80}
-              className="hover:text-[#227bed] transition-all duration-300 hover:scale-105 cursor-pointer"
-            >
-              Portfólio
-            </ScrollLink>
-            <ScrollLink
-              to="feedbacks"
-              smooth={true}
-              duration={1200}
-              offset={-80}
-              className="hover:text-[#227bed] transition-all duration-300 hover:scale-105 cursor-pointer"
-            >
-              Feedbacks
-            </ScrollLink>
-            <ScrollLink
-              to="why-livin"
-              smooth={true}
-              duration={1200}
-              offset={-80}
-              className="hover:text-[#227bed] transition-all duration-300 hover:scale-105 cursor-pointer"
-            >
-              Por que a Livin?
-            </ScrollLink>
-            <ScrollLink
-              to="contact-us"
-              smooth={true}
-              duration={1200}
-              offset={-80}
-              className="hover:text-[#227bed] transition-all duration-300 hover:scale-105 cursor-pointer"
-            >
-              Contato
-            </ScrollLink>
-          </div>
-        </nav>
-      </header>
+      <SiteHeader />
 
-      {/* Hero Section */}
+      {/* Hero */}
       <section
-        className="relative min-h-screen pt-24 flex items-center overflow-hidden bg-fixed bg-center 
-             bg-[length:100%_auto] md:bg-cover"
+        className="relative flex min-h-screen items-center overflow-hidden bg-fixed bg-center bg-[length:100%_auto] pt-24 md:bg-cover"
         style={{ backgroundImage: "url('/hero.jpg')" }}
       >
-        {/* Overlay com gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#000000] via-[#227bed]/20 to-[#000000]"></div>
-
-        {/* Shapes animados */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-[#005cc1]/10 rounded-full animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-24 h-24 bg-[#227bed]/10 rounded-full animate-bounce"></div>
-          <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-white/5 rounded-full animate-ping"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-ink via-brand-active/20 to-brand-ink" />
+        <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+          <div className="absolute left-10 top-24 h-64 w-64 rounded-full bg-brand-blue/20 blur-3xl animate-aurora" />
+          <div className="absolute bottom-24 right-10 h-72 w-72 rounded-full bg-brand-active/20 blur-3xl animate-aurora [animation-delay:-8s]" />
         </div>
 
-        {/* Conteúdo */}
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
-          <div className="text-white animate-fade-in-up">
-            <h1 className="text-5xl lg:text-7xl font-bold mb-8 leading-small">
+        <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-2">
+          <div className="animate-fade-in-up text-white">
+            <Eyebrow tone="light">Agência de Marketing Digital</Eyebrow>
+            <h1 className="mb-6 text-5xl font-bold leading-tight lg:text-7xl">
               Somos o hub entre você e o{" "}
-              <span className="playfair text-[#d8f700] animate-pulse">digital.</span>
+              <span className="playfair text-brand-lime">digital.</span>
             </h1>
-            <p className="text-1xl mb-8 text-white/80 max-w-md">
+            <p className="mb-8 max-w-md text-xl text-white/80">
               Especialistas em Gestão de Redes Sociais e Cobertura de Eventos
             </p>
-            <Button className="bg-[#005cc1] hover:bg-[#227bed] cursor-pointer text-white px-8 py-5 rounded-full text-base font-medium group transition-all duration-300 hover:scale-105 hover:shadow-lg">
-              QUERO FAZER PARTE DO HUB
-              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-            </Button>
+            <a
+              href="https://wa.me/5548998604665?text=Ol%C3%A1%2C%20quero%20fazer%20parte%20do%20hub"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button className="group rounded-full bg-brand-blue px-8 py-6 text-base font-medium text-white transition-all duration-300 hover:scale-105 hover:bg-brand-active hover:shadow-lg">
+                QUERO FAZER PARTE DO HUB
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Button>
+            </a>
           </div>
         </div>
       </section>
-      
-      {/* What We Do Section */}
-      <section id="what-we-do" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-          <div className="flex justify-center items-center">
-            <img
-              src="/equipe_livin.jpg"
-              alt="Equipe Livin Hub Digital"
-              className="rounded-3xl shadow-2xl w-full max-w-lg object-cover"
+
+      {/* Quem somos */}
+      <section id="what-we-do" className="scroll-mt-24 bg-gray-50 py-24">
+        <Reveal className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-6 md:grid-cols-2">
+          <div className="relative mx-auto w-full max-w-lg">
+            <div
+              className="absolute -inset-3 -z-10 rounded-[2rem] bg-gradient-to-br from-brand-blue/20 via-brand-active/15 to-brand-lime/15 blur-2xl"
+              aria-hidden="true"
             />
+            <div className="relative overflow-hidden rounded-3xl shadow-2xl ring-1 ring-black/5">
+              <Image
+                src="/equipe_livin.jpg"
+                alt="Equipe Livin Hub Digital"
+                width={1600}
+                height={1066}
+                sizes="(max-width: 768px) 100vw, 512px"
+                className="h-auto w-full object-cover transition-transform duration-500 hover:scale-[1.03]"
+              />
+            </div>
           </div>
-          {/* Texto à direita */}
-          <div className="text-center md:text-left mb-16 md:mb-0">
-            <h2 className="text-4xl font-bold mb-4"><span className="playfair ">Prazer,</span> somos a Livin Hub Digital!</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto md:mx-0">
+          <div className="text-center md:text-left">
+            <Eyebrow>Quem somos</Eyebrow>
+            <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+              <span className="playfair">Prazer,</span> somos a Livin Hub Digital!
+            </h2>
+            <p className="mx-auto max-w-2xl text-gray-600 md:mx-0">
               Nascemos em 2019 como Agência Ilumi, e desde o início acreditamos que estar no digital é muito mais que postar nas redes sociais. É entender o negócio do cliente, falar a sua língua e se tornar parte da sua jornada.
               Em seis anos, atendemos mais de 300 marcas no Brasil e nos Estados Unidos. Crescemos, expandimos e descobrimos que o que fazemos vai muito além de ser “apenas” uma agência.
-              <br /><br />
-              Hoje, como <span className="font-bold text-[#005cc1]">Livin Hub Digital</span>, assumimos nossa verdadeira essência: ser o ponto central que conecta estratégia, conteúdo, branding, design, tráfego e eventos em um só lugar — o seu hub digital.
+              <br />
+              <br />
+              Hoje, como <span className="font-bold text-brand-blue">Livin Hub Digital</span>, assumimos nossa verdadeira essência: ser o ponto central que conecta estratégia, conteúdo, branding, design, tráfego e eventos em um só lugar — o seu hub digital.
             </p>
           </div>
-        </div>
+        </Reveal>
       </section>
 
+      {/* Resultados + Depoimentos — fundo compartilhado e contínuo */}
+      <section
+        id="feedbacks"
+        className="relative scroll-mt-24 overflow-hidden bg-gradient-to-r from-brand-night to-brand-deep py-24"
+      >
+        {/* Aurora dinâmica cobrindo toda a área combinada */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+          <div className="absolute -left-24 top-0 h-72 w-72 rounded-full bg-brand-active/15 blur-3xl animate-aurora" />
+          <div className="absolute right-0 top-1/3 h-80 w-80 rounded-full bg-brand-blue/15 blur-3xl animate-aurora [animation-delay:-6s]" />
+          <div className="absolute -bottom-24 left-1/3 h-72 w-72 rounded-full bg-brand-active/12 blur-3xl animate-aurora [animation-delay:-11s]" />
+        </div>
 
-      {/* Stats Section */}
-      <section id="feedbacks" className="py-20 bg-gradient-to-r from-black via-[#001a3d] to-[#012f63] relative overflow-hidden">        
-        <div className="absolute inset-0">
-          <div className="absolute top-10 left-10 w-20 h-20 bg-white/5 rounded-full animate-pulse"></div>
-          <div className="absolute bottom-10 right-10 w-16 h-16 bg-[#005cc1]/10 rounded-full animate-bounce"></div>
-        </div>
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="grid md:grid-cols-3 gap-8 text-center text-white">
-            <div className="group cursor-pointer hover:scale-105 transition-transform duration-300">
-              <div className="text-5xl font-bold text-[#d8f700] mb-2 group-hover:text-[#227bed] transition-colors duration-300">
-                +300
-              </div>
-              <p className="text-white/80 group-hover:text-white transition-colors duration-300">Empresas transformadas</p>
+        <div className="relative z-10 mx-auto max-w-7xl px-6">
+          {/* Resultados */}
+          <Reveal>
+            <div className="mb-12 text-center">
+              <Eyebrow tone="light">Resultados</Eyebrow>
+              <h2 className="text-3xl font-bold text-white md:text-4xl">Números que falam por nós</h2>
             </div>
-            <div className="group cursor-pointer hover:scale-105 transition-transform duration-300">
-              <div className="text-5xl font-bold text-[#d8f700] mb-2 group-hover:text-[#227bed] transition-colors duration-300">
-                +6
-              </div>
-              <p className="text-white/80 group-hover:text-white transition-colors duration-300">Anos de mercado</p>
+            <div className="grid gap-6 md:grid-cols-3">
+              {stats.map((s) => (
+                <div
+                  key={s.label}
+                  className="group rounded-3xl bg-white/5 p-8 text-center ring-1 ring-white/10 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white/10 hover:ring-white/20"
+                >
+                  <div className="mb-2 text-5xl font-bold text-brand-lime">
+                    {"text" in s ? (
+                      s.text
+                    ) : (
+                      <>
+                        {s.prefix}
+                        <CountUp value={s.value} />
+                      </>
+                    )}
+                  </div>
+                  <p className="text-white/75">{s.label}</p>
+                </div>
+              ))}
             </div>
-            <div className="group cursor-pointer hover:scale-105 transition-transform duration-300">
-              <div className="text-5xl font-bold text-[#d8f700] mb-2 group-hover:text-[#227bed] transition-colors duration-300">
-                Presença
-              </div>
-              <p className="text-white/80 group-hover:text-white transition-colors duration-300">
-                Nacional e Internacional
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+          </Reveal>
 
-      {/* Testimonials Section */}
-      <section className="py-20 bg-gradient-to-r from-black via-[#001a3d] to-[#012f63] relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-20 right-20 w-24 h-24 bg-[#005cc1]/5 rounded-full animate-pulse"></div>
-          <div className="absolute bottom-20 left-20 w-32 h-32 bg-white/5 rounded-full animate-bounce"></div>
-        </div>
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-4">O que nossos clientes dizem</h2>
-          </div>
+          {/* divisória sutil entre os dois blocos */}
+          <div
+            className="mx-auto my-16 h-px max-w-xs bg-gradient-to-r from-transparent via-white/15 to-transparent"
+            aria-hidden="true"
+          />
+
+          {/* Depoimentos */}
+          <Reveal className="mb-12 text-center">
+            <Eyebrow tone="light">Depoimentos</Eyebrow>
+            <h2 className="text-3xl font-bold text-white md:text-4xl">O que nossos clientes dizem</h2>
+          </Reveal>
           <TestimonialsCarousel />
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
-      <section id="why-choose-us" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-[#000000] mb-4">Por que escolher a Livin Hub Digital?</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+      {/* Por que escolher */}
+      <section id="why-choose-us" className="scroll-mt-24 bg-gray-50 py-24">
+        <div className="mx-auto max-w-7xl px-6">
+          <Reveal className="mb-14 text-center">
+            <Eyebrow>Por que a Livin</Eyebrow>
+            <h2 className="mb-4 text-3xl font-bold text-brand-ink md:text-4xl">
+              Por que escolher a Livin Hub Digital?
+            </h2>
+            <p className="mx-auto max-w-2xl text-gray-600">
               Mais do que uma agência, somos o hub que conecta estratégia, criatividade e execução para que a sua marca tenha presença real e resultados consistentes.
             </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group">
-              <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-[#005cc1]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#005cc1]/20 group-hover:scale-110 transition-all duration-300">
-                  <Lightbulb className="w-8 h-8 text-[#005cc1] group-hover:scale-110 transition-transform duration-300" />
-                </div>
-                <h3 className="text-xl font-bold text-[#000000] mb-4 group-hover:text-[#227bed] transition-colors duration-300">
-                  Estratégia Integrada
-                </h3>
-                <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
-                  Somos um hub que conecta redes sociais, branding, design, vídeo, tráfego e eventos em um único ecossistema criativo.
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group">
-              <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-[#005cc1]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#005cc1]/20 group-hover:scale-110 transition-all duration-300">
-                  <MessageCircle className="w-8 h-8 text-[#005cc1] group-hover:scale-110 transition-transform duration-300" />
-                </div>
-                <h3 className="text-xl font-bold text-[#000000] mb-4 group-hover:text-[#227bed] transition-colors duration-300">
-                  Atendimento humano
-                </h3>
-                <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
-                  Entramos no seu negócio para entender de verdade suas necessidades e criar soluções personalizadas.
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group">
-              <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-[#005cc1]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#005cc1]/20 group-hover:scale-110 transition-all duration-300">
-                  <Target className="w-8 h-8 text-[#005cc1] group-hover:scale-110 transition-transform duration-300" />
-                </div>
-                <h3 className="text-xl font-bold text-[#000000] mb-4 group-hover:text-[#227bed] transition-colors duration-300">
-                  Experiência e resultado
-                </h3>
-                <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
-                  +300 marcas transformadas em 6 anos de atuação no Brasil e nos EUA, com entregas criativas e de alto nível.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+          </Reveal>
+          <Reveal className="grid gap-6 md:grid-cols-3">
+            {whyChoose.map((c) => (
+              <FeatureCard key={c.title} icon={c.icon} title={c.title}>
+                {c.desc}
+              </FeatureCard>
+            ))}
+          </Reveal>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="py-10 bg-gradient-to-r from-black via-[#001a3d] to-[#012f63] relative bg-cover bg-center overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-4">Como a Livin pode te ajudar</h2>
-            <p className="text-white/80 max-w-2xl mx-auto">
+      {/* Serviços — bento */}
+      <section
+        id="services"
+        className="relative scroll-mt-24 overflow-hidden bg-gradient-to-r from-brand-night to-brand-deep py-24"
+      >
+        <AuroraDark />
+        <div className="relative z-10 mx-auto max-w-7xl px-6">
+          <Reveal className="mb-14 text-center">
+            <Eyebrow tone="light">Serviços</Eyebrow>
+            <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">Como a Livin pode te ajudar</h2>
+            <p className="mx-auto max-w-2xl text-white/80">
               Conheça nosso ecossistema criativo e estratégico, onde marcas ganham voz, presença e movimento.
             </p>
-          </div>
-        </div>
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8">
-          <Card className="border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group cursor-pointer">
-            <CardContent className="p-8 text-center">
-              <div className="w-16 h-16 bg-[#005cc1]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#005cc1]/20 group-hover:scale-110 transition-all duration-300">
-                <Users className="w-8 h-8 text-[#005cc1] group-hover:scale-110 transition-transform duration-300" />
-              </div>
-              <h3 className="text-xl font-bold text-[#005cc1] group-hover:text-[#227bed] transition-colors duration-300 mb-6">
-                Gestão de Redes Sociais
-              </h3>
-              <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
-                Cuidamos de todo o processo das suas redes: planejamento estratégico, criação de conteúdo, design, legendas, agendamento e acompanhamento de resultados. Tudo para garantir que sua marca tenha uma presença consistente, profissional e alinhada aos seus objetivos.
-              </p>
-            </CardContent>
-          </Card>
-          <Card className="border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group cursor-pointer">
-            <CardContent className="p-8 text-center">
-              <div className="w-16 h-16 bg-[#005cc1]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#005cc1]/20 group-hover:scale-110 transition-all duration-300">
-                <Focus className="w-8 h-8 text-[#005cc1] group-hover:scale-110 transition-transform duration-300" />
-              </div>
-              <h3 className="text-xl font-bold text-[#000000] group-hover:text-[#227bed] transition-colors duration-300 mb-6">
-                Fotografia e Audiovisual
-              </h3>
-              <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
-                Registramos fotos e vídeos profissionais para fortalecer a presença digital da sua marca. Trabalhamos com os melhores equipamentos, incluindo drone, para capturar ângulos únicos e transmitir a essência do seu negócio. Entregamos imagens e vídeos prontos para engajar, gerar conexão e contar histórias de forma estratégica.
-              </p>
-            </CardContent>
-          </Card>
-          <Card className="border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group cursor-pointer">
-            <CardContent className="p-8 text-center">
-              <div className="w-16 h-16 bg-[#005cc1]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#005cc1]/20 group-hover:scale-110 transition-all duration-300">
-                <Smartphone className="w-8 h-8 text-[#005cc1] group-hover:scale-110 transition-transform duration-300" />
-              </div>
-              <h3 className="text-xl font-bold text-[#000000] group-hover:text-[#227bed] transition-colors duration-300 mb-6">
-                Cobertura de Eventos & Storymaker
-              </h3>
-              <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300 mb-6">
-                Registramos seu evento com um olhar estratégico. Produzimos fotos e vídeos em tempo real (stories, reels, bastidores e highlights) que conectam e ampliam seu alcance. Com equipamentos profissionais, incluindo drone, e edição ágil, você publica no mesmo dia e mantém a audiência aquecida.
-              </p>
-              <a
-                href="https://instagram.com/livinhubdigital"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block px-6 py-3 rounded-full font-semibold text-white bg-[#005cc1] hover:bg-[#227bed] transition-all duration-300 shadow-lg hover:scale-105"
-                style={{ textDecoration: "none" }}
-              >
-                Veja nosso portfólio
-              </a>
-            </CardContent>
-          </Card>
-          <Card className="border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group cursor-pointer">
-            <CardContent className="p-8 text-center">
-              <div className="w-16 h-16 bg-[#005cc1]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#005cc1]/20 group-hover:scale-110 transition-all duration-300">
-                <Monitor className="w-8 h-8 text-[#005cc1] group-hover:scale-110 transition-transform duration-300" />
-              </div>
-              <h3 className="text-xl font-bold text-[#000000] group-hover:text-[#227bed] transition-colors duration-300">
-                Identidade Visual
-              </h3>
-            </CardContent>
-          </Card>
-          <Card className="border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group cursor-pointer">
-            <CardContent className="p-8 text-center">
-              <div className="w-16 h-16 bg-[#005cc1]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#005cc1]/20 group-hover:scale-110 transition-all duration-300">
-                <ChartGantt className="w-8 h-8 text-[#005cc1] group-hover:scale-110 transition-transform duration-300" />
-              </div>
-              <h3 className="text-xl font-bold text-[#000000] group-hover:text-[#227bed] transition-colors duration-300">
-                Diagnóstico de Perfil
-              </h3>
-            </CardContent>
-          </Card>
-          <Card className="border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group cursor-pointer">
-            <CardContent className="p-8 text-center">
-              <div className="w-16 h-16 bg-[#005cc1]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#005cc1]/20 group-hover:scale-110 transition-all duration-300">
-                <BriefcaseBusiness className="w-8 h-8 text-[#005cc1] group-hover:scale-110 transition-transform duration-300" />
-              </div>
-              <h3 className="text-xl font-bold text-[#000000] group-hover:text-[#227bed] transition-colors duration-300">
-                Google Meu Negócio
-              </h3>
-            </CardContent>
-          </Card>
-          <Card className="border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group cursor-pointer">
-            <CardContent className="p-8 text-center">
-              <div className="w-16 h-16 bg-[#005cc1]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#005cc1]/20 group-hover:scale-110 transition-all duration-300">
-                <Paperclip className="w-8 h-8 text-[#005cc1] group-hover:scale-110 transition-transform duration-300" />
-              </div>
-              <h3 className="text-xl font-bold text-[#000000] group-hover:text-[#227bed] transition-colors duration-300">
-                Papelaria Criativa
-              </h3>
-            </CardContent>
-          </Card>
-          <Card className="border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group cursor-pointer">
-            <CardContent className="p-8 text-center">
-              <div className="w-16 h-16 bg-[#005cc1]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#005cc1]/20 group-hover:scale-110 transition-all duration-300">
-                <ChartSpline className="w-8 h-8 text-[#005cc1] group-hover:scale-110 transition-transform duration-300" />
-              </div>
-              <h3 className="text-xl font-bold text-[#000000] group-hover:text-[#227bed] transition-colors duration-300">
-                Tráfego Pago
-              </h3>
-            </CardContent>
-          </Card>
-          <Card className="border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group cursor-pointer">
-            <CardContent className="p-8 text-center">
-              <div className="w-16 h-16 bg-[#005cc1]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#005cc1]/20 group-hover:scale-110 transition-all duration-300">
-                <Lightbulb className="w-8 h-8 text-[#005cc1] group-hover:scale-110 transition-transform duration-300" />
-              </div>
-              <h3 className="text-xl font-bold text-[#000000] group-hover:text-[#227bed] transition-colors duration-300">
-                Criação de site e landing page
-              </h3>
-            </CardContent>
-          </Card>
+          </Reveal>
+          <Reveal className="grid gap-5 md:grid-cols-3">
+            {featuredServices.map((s) => (
+              <ServiceFeature key={s.title} icon={s.icon} title={s.title} desc={s.desc} cta={s.cta} />
+            ))}
+          </Reveal>
+          <Reveal className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3" delay={100}>
+            {otherServices.map((s) => (
+              <ServiceTile key={s.title} icon={s.icon} title={s.title} />
+            ))}
+          </Reveal>
         </div>
       </section>
 
-      {/* Portfolio Section */}
-      <section id="portfolio" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-          {/* Grid de Logos à esquerda */}
-          <LogoCarousel />
-          {/* Texto à direita */}
+      {/* Portfólio */}
+      <section id="portfolio" className="scroll-mt-24 bg-white py-24">
+        <Reveal className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-6 md:grid-cols-2">
+          <div className="relative">
+            <div
+              className="absolute -inset-2 -z-10 rounded-[2rem] bg-gradient-to-br from-brand-blue/10 via-brand-active/10 to-brand-lime/10 blur-2xl"
+              aria-hidden="true"
+            />
+            <div className="rounded-3xl bg-gray-50 p-6 ring-1 ring-black/5">
+              <LogoCarousel />
+            </div>
+          </div>
           <div className="text-center md:text-left">
-            <h2 className="text-4xl font-bold text-[#000000] mb-4">Marcas que fazem parte do nosso Hub</h2>
+            <Eyebrow>Portfólio</Eyebrow>
+            <h2 className="mb-4 text-3xl font-bold text-brand-ink md:text-4xl">
+              Marcas que fazem parte do nosso Hub
+            </h2>
             <div className="space-y-4 text-gray-600">
               <p>
-                Temos orgulho de conectar nossa <span className="font-bold text-[#005cc1]">criatividade</span> e <span className="font-bold text-[#005cc1]">estratégia</span> a empresas que entendem o poder de uma presença digital autêntica.
+                Temos orgulho de conectar nossa <span className="font-bold text-brand-blue">criatividade</span> e <span className="font-bold text-brand-blue">estratégia</span> a empresas que entendem o poder de uma presença digital autêntica.
               </p>
               <p>
-                Valorizamos marcas que usam as redes para criar <span className="font-bold text-[#005cc1]">conexões reais</span>, fortalecer autoridade e gerar impacto.
+                Valorizamos marcas que usam as redes para criar <span className="font-bold text-brand-blue">conexões reais</span>, fortalecer autoridade e gerar impacto.
               </p>
               <p>
                 Nossos clientes confiam em soluções pensadas sob medida, alinhadas às suas metas e à identidade única de cada negócio.
@@ -378,213 +421,268 @@ export default function Home() {
               </p>
             </div>
           </div>
-        </div>
+        </Reveal>
       </section>
 
-      {/* Why Livin Section */}
-      <section id="why-livin" className="py-20 bg-gradient-to-r from-black via-[#001a3d] to-[#012f63] relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-[#005cc1]/10 rounded-full animate-spin-slow"></div>
-          <div className="absolute bottom-16 right-1/4 w-20 h-20 bg-white/10 rounded-full animate-pulse"></div>
-          <div className="absolute top-10 right-1/3 w-16 h-16 bg-[#227bed]/10 rounded-full animate-ping"></div>
-        </div>
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-4">
-              Por que escolher a <span className="font-bold text-[#005cc1]">Livin Hub Digital</span> para cuidar da sua marca nas redes sociais?</h2>
+      {/* Por que a Livin */}
+      <section
+        id="why-livin"
+        className="relative scroll-mt-24 overflow-hidden bg-gradient-to-r from-brand-night to-brand-deep py-24"
+      >
+        <AuroraDark />
+        <div className="relative z-10 mx-auto max-w-7xl px-6">
+          <Reveal className="mb-12 text-center">
+            <Eyebrow tone="light">Por que a Livin</Eyebrow>
+            <h2 className="mx-auto max-w-3xl text-3xl font-bold text-white md:text-4xl">
+              Por que escolher a <span className="text-brand-active">Livin Hub Digital</span> para cuidar da sua marca nas redes sociais?
+            </h2>
+          </Reveal>
+          <div className="mb-14 grid grid-cols-1 items-center gap-8 md:grid-cols-2">
+            <Reveal className="space-y-4 text-center md:text-left">
+              <p className="text-lg font-medium text-white/90">
+                A Livin não é só uma agência. Somos um hub criativo e estratégico que entra de verdade no seu negócio para entender, construir e transformar.
+              </p>
+              <p className="text-lg font-medium text-white/90">
+                Enquanto você foca no que faz de melhor, nós cuidamos da presença digital da sua marca nas redes sociais ao branding, do conteúdo a estratégia com estratégia, consistência e criatividade.
+              </p>
+            </Reveal>
+            <Reveal className="flex flex-col gap-4" delay={120}>
+              {whyLivinPoints.map((p) => (
+                <div
+                  key={p}
+                  className="flex items-start gap-3 rounded-2xl bg-white/[0.06] p-4 ring-1 ring-white/10 transition-colors duration-300 hover:bg-white/[0.1]"
+                >
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brand-lime" />
+                  <span className="font-medium text-white/90">{p}</span>
+                </div>
+              ))}
+            </Reveal>
           </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 items-center text-center md:text-left mb-16 gap-8">
-            <div className="space-y-2 max-w-2xl mx-auto md:mx-0">
-              <h2 className="text-white font-semibold font-xl">
-              A Livin não é só uma agência. Somos um hub criativo e estratégico que entra de verdade no seu negócio para entender, construir e transformar.
-              </h2>
-              <h2 className="text-white font-semibold font-xl">
-              Enquanto você foca no que faz de melhor, nós cuidamos da presença digital da sua marca nas redes sociais ao branding, do conteúdo a estratégia com estratégia, consistência e criatividade.
-              </h2>
-            </div>
-            <div>
-              <ul className="max-w-2xl mx-auto flex flex-col gap-6 mt-6">
-              <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#227bed]/20 transition-all duration-300">
-                <div className="flex items-center">
-                <span className="text-[#d8f700] mr-3">•</span> Criamos conteúdo que conecta, engaja e gera autoridade.
-                </div>
-              </li>
-              <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#227bed]/20 transition-all duration-300">
-                <div className="flex items-center">
-                <span className="text-[#d8f700] mr-3">•</span> Unimos design, vídeo, eventos e performance num só ecossistema.
-                </div>
-              </li>
-              <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#227bed]/20 transition-all duration-300">
-                <div className="flex items-center">
-                <span className="text-[#d8f700] mr-3">•</span> Planejamos ações com objetivos claros e mensuráveis.
-                </div>
-              </li>
-              <li className="flex flex-col items-center justify-center bg-white/10 rounded-full px-6 py-4 text-white font-semibold text-lg shadow hover:bg-[#227bed]/20 transition-all duration-300">
-                <div className="flex items-center">
-                <span className="text-[#d8f700] text-left mr-3">•</span> E, acima de tudo, atendemos pessoas com escuta ativa e soluções personalizadas.
-                </div>
-              </li>
-              </ul>
-            </div>
-            </div>
-          <div className="text-center mb-16">
-            <h3 className="text-3xl font-bold text-white mb-4">
+          <Reveal className="text-center">
+            <h3 className="mx-auto max-w-3xl text-2xl font-bold text-white md:text-3xl">
               Já são mais de 300 marcas impactadas em 6 anos de atuação no Brasil e nos EUA. E a próxima pode ser a sua.
             </h3>
-          </div>
+          </Reveal>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section id="contact-us" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-2 grid md:grid-cols-2 gap-20 items-center">
-          <div className="text-center md:text-left mb-16 md:mb-0">
-            <h2 className="text-2xl font-bold text-[#227bed] mb-4">Você já tem um bom conteúdo.</h2>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-[#005cc1] to-[#227bed] bg-clip-text text-transparent mb-6">Agora é hora de ter uma estratégia que faça tudo isso vender.</h1>
-            <p className="text-gray-600 max-w-2xl mx-auto md:mx-0 mb-12">
-              Seja você uma empresa local, uma marca pessoal ou um pequeno negócio em crescimento, seu potencial digital merece um plano estratégico de verdade.
+      {/* CTA — Bruna */}
+      <section id="contact-us" className="scroll-mt-24 bg-white py-24">
+        <Reveal className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-6 md:grid-cols-2 lg:gap-16">
+          {/* Copy */}
+          <div className="text-center md:text-left">
+            <Eyebrow>Estratégia Digital</Eyebrow>
+            <h2 className="mb-5 text-3xl font-bold leading-tight text-brand-ink md:text-4xl lg:text-5xl">
+              Você já tem um bom conteúdo.{" "}
+              <span className="text-brand-blue">Agora falta a estratégia que faz ele vender.</span>
+            </h2>
+            <p className="mx-auto mb-8 max-w-md text-lg text-gray-600 md:mx-0">
+              Seja uma empresa local, uma marca pessoal ou um negócio em crescimento: seu potencial digital merece um plano de verdade, feito sob medida pra você.
             </p>
             <a href="https://wa.me/5548998604665?text=Ol%C3%A1%2C%20quero%20estrat%C3%A9gia%20para%20o%20meu%20neg%C3%B3cio">
-              <Button className="bg-[#005cc1] cursor-pointer hover:bg-[#227bed] hover:shadow-xl duration-300 transition-all text-base px-4 py-6 hover:scale-110">QUERO ESTRATÉGIA PARA O MEU NEGÓCIO <ArrowRight className="w-4 h-4" /></Button>
+              <Button className="group rounded-full bg-brand-blue px-7 py-6 text-base font-medium text-white transition-all duration-300 hover:scale-105 hover:bg-brand-active hover:shadow-xl">
+                QUERO ESTRATÉGIA PARA O MEU NEGÓCIO
+                <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Button>
             </a>
           </div>
-          <div className="flex flex-col justify-center gap-2 justify-self-end">
-            <img
-              src="/CTA-BRUNA.JPG"
-              alt="Equipe Livin Hub Digital"
-              className="rounded-3xl shadow-xl w-full max-w-md object-cover"
+
+          {/* Foto da fundadora */}
+          <div className="relative mx-auto w-full max-w-sm md:justify-self-end">
+            <div
+              className="absolute -inset-3 -z-10 rounded-[2rem] bg-gradient-to-br from-brand-blue/30 via-brand-active/20 to-brand-lime/20 blur-2xl"
+              aria-hidden="true"
             />
-            <div className="flex justify-between">
-              <div className="text-left">
-                <p className="text-1lg font-base">Bruna de Bem</p>
-                <p className="text-1sm font-bold text-[#227bed]">Estrategista Digital</p>
-              </div>
-              <div className="text-left">
-                <p className="text-2sm font-base">Livin Hub Digital</p>
-                <p className="text-1sm font-bold text-[#227bed]">Founder</p>
+            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-2xl ring-1 ring-black/5">
+              <Image
+                src="/CTA-BRUNA.JPG"
+                alt="Bruna de Bem — Founder e Estrategista Digital da Livin Hub Digital"
+                fill
+                sizes="(max-width: 768px) 90vw, 384px"
+                className="object-cover object-top"
+              />
+              <div
+                className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/75 via-black/20 to-transparent"
+                aria-hidden="true"
+              />
+              <div className="absolute inset-x-4 bottom-4 flex items-center justify-between gap-3 rounded-2xl bg-white/10 px-4 py-3 backdrop-blur-md ring-1 ring-white/20">
+                <div className="text-white">
+                  <p className="font-semibold leading-tight">Bruna de Bem</p>
+                  <p className="text-sm text-white/75">Founder &amp; Estrategista Digital</p>
+                </div>
+                <span className="text-xs font-semibold uppercase tracking-wide text-brand-lime">
+                  Livin
+                </span>
               </div>
             </div>
           </div>
-        </div>
+        </Reveal>
       </section>
 
-      <section className="py-20 bg-gradient-to-r from-black via-[#001a3d] to-[#012f63] relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-10 left-1/4 w-32 h-32 bg-white/5 rounded-full animate-pulse"></div>
-          <div className="absolute bottom-10 right-1/4 w-24 h-24 bg-[#005cc1]/10 rounded-full animate-bounce"></div>
-        </div>
-        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-          <h2 className="text-4xl font-bold text-white mb-6">Pronto para dar o próximo passo no digital?</h2>
-          <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
-            Vamos juntos criar uma presença que conecta, engaja e gera resultados reais para a sua marca.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://wa.me/5548998604665?text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20servi%C3%A7os%20da%20Livin%20Hub%20Digital" target="_blank" rel="noopener noreferrer">
-              <Button
-                variant="outline"
-                className="border-white text-white hover:bg-white hover:text-[#005cc1] px-8 py-3 rounded-full text-base font-medium bg-transparent transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
+      {/* CTAs finais — dois caminhos */}
+      <section className="bg-gradient-to-b from-gray-50 to-white py-24">
+        <Reveal className="mx-auto grid max-w-6xl grid-cols-1 gap-6 px-6 md:grid-cols-2 lg:gap-8">
+          {/* Card escuro — próximo passo no digital */}
+          <div className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-black via-brand-night to-brand-deep p-8 shadow-xl ring-1 ring-white/10 transition-transform duration-300 hover:-translate-y-1 lg:p-10">
+            <div
+              className="absolute -right-12 -top-12 h-44 w-44 rounded-full bg-brand-active/25 blur-3xl transition-opacity duration-500 group-hover:opacity-80"
+              aria-hidden="true"
+            />
+            <div className="relative flex h-full flex-col">
+              <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 ring-1 ring-white/20">
+                <Rocket className="h-6 w-6 text-brand-lime" />
+              </div>
+              <h3 className="mb-3 text-2xl font-bold leading-tight text-white lg:text-3xl">
+                Pronto para dar o próximo passo no digital?
+              </h3>
+              <p className="mb-8 max-w-md text-white/70">
+                Vamos juntos criar uma presença que conecta, engaja e gera resultados reais para a sua marca.
+              </p>
+              <a
+                className="mt-auto"
+                href="https://wa.me/5548998604665?text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20servi%C3%A7os%20da%20Livin%20Hub%20Digital"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Chame no WhatsApp<Send />
-              </Button>
-            </a>
+                <Button className="group/btn rounded-full bg-white px-7 py-6 text-base font-medium text-brand-blue transition-all duration-300 hover:scale-105 hover:bg-brand-lime hover:text-brand-ink">
+                  Chame no WhatsApp
+                  <Send className="ml-1 h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                </Button>
+              </a>
+            </div>
           </div>
-        </div>
-      </section>
 
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-          <h2 className="text-4xl font-bold text-[#000000] mb-6">Seu evento merece viver além do dia em que acontece.</h2>
-          <p className="text-lg text-gray-600  mb-8 max-w-2xl mx-auto">
-            Captamos cada momento com um olhar estratégico, transformando emoções em conteúdo que conecta e gera lembranças.
-          </p>
-          <div className="flex justify-center mt-8">
-            <a href="https://wa.me/5548998604665?text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20cobertura%20de%20evento%20e%20storymaker%20da%20Livin" target="_blank" rel="noopener noreferrer">
-              <Button
-                className="bg-[#005cc1] hover:bg-[#227bed] text-white px-8 py-3 rounded-full text-base font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
+          {/* Card claro — cobertura de evento */}
+          <div className="group relative overflow-hidden rounded-3xl bg-white p-8 shadow-xl ring-1 ring-black/5 transition-transform duration-300 hover:-translate-y-1 lg:p-10">
+            <div
+              className="absolute -right-12 -top-12 h-44 w-44 rounded-full bg-brand-blue/10 blur-3xl transition-opacity duration-500 group-hover:opacity-80"
+              aria-hidden="true"
+            />
+            <div className="relative flex h-full flex-col">
+              <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-blue/10 ring-1 ring-brand-blue/15">
+                <Camera className="h-6 w-6 text-brand-blue" />
+              </div>
+              <h3 className="mb-3 text-2xl font-bold leading-tight text-brand-ink lg:text-3xl">
+                Seu evento merece viver além do dia em que acontece.
+              </h3>
+              <p className="mb-8 max-w-md text-gray-600">
+                Captamos cada momento com um olhar estratégico, transformando emoções em conteúdo que conecta e gera lembranças.
+              </p>
+              <a
+                className="mt-auto"
+                href="https://wa.me/5548998604665?text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20cobertura%20de%20evento%20e%20storymaker%20da%20Livin"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Garanta a sua data <ArrowRight className="w-4 h-4" />
-              </Button>
-            </a>
+                <Button className="group/btn rounded-full bg-brand-blue px-7 py-6 text-base font-medium text-white transition-all duration-300 hover:scale-105 hover:bg-brand-active">
+                  Garanta a sua data
+                  <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                </Button>
+              </a>
+            </div>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* Footer */}
-      <footer className="bg-black text-white py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8">
+      <footer className="bg-black py-16 text-white">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="grid gap-8 md:grid-cols-4">
             <div className="flex flex-col items-start">
-              <img
+              <Image
                 src="/livin-logotipo-white.svg"
                 alt="Livin Hub Digital"
-                className="mb-2 w-32 h-auto"
+                width={200}
+                height={102}
+                className="mb-3 h-auto w-32"
               />
-              <p className="text-gray-400 text-sm mb-1">
+              <p className="mb-1 text-sm text-gray-400">
                 Somos o ponto de conexão entre marcas e o mundo digital.
               </p>
-              <p className="text-gray-400 text-sm">© 2025 Livin. Todos os direitos reservados.</p>
+              <p className="text-sm text-gray-400">© 2026 Livin. Todos os direitos reservados.</p>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Links Rápidos</h4>
+              <h4 className="mb-4 font-semibold">Links Rápidos</h4>
               <ul className="space-y-2 text-sm text-gray-400">
                 <li>
-                  <a href="#" className="hover:text-[#227bed] transition-all duration-300 hover:translate-x-1">
+                  <a href="#" className="inline-block transition-all duration-300 hover:translate-x-1 hover:text-brand-active">
                     Início
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-[#227bed] transition-all duration-300 hover:translate-x-1">
+                  <a href="#what-we-do" className="inline-block transition-all duration-300 hover:translate-x-1 hover:text-brand-active">
+                    Quem somos
+                  </a>
+                </li>
+                <li>
+                  <a href="#services" className="inline-block transition-all duration-300 hover:translate-x-1 hover:text-brand-active">
                     Serviços
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-[#227bed] transition-all duration-300 hover:translate-x-1">
+                  <a href="#portfolio" className="inline-block transition-all duration-300 hover:translate-x-1 hover:text-brand-active">
                     Portfólio
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-[#227bed] transition-all duration-300 hover:translate-x-1">
+                  <a href="#contact-us" className="inline-block transition-all duration-300 hover:translate-x-1 hover:text-brand-active">
                     Contato
                   </a>
                 </li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Serviços</h4>
+              <h4 className="mb-4 font-semibold">Serviços</h4>
               <ul className="space-y-2 text-sm text-gray-400">
                 <li>
-                  <a href="#" className="hover:text-[#227bed] transition-all duration-300 hover:translate-x-1">
+                  <a href="#services" className="inline-block transition-all duration-300 hover:translate-x-1 hover:text-brand-active">
                     Gestão de Redes
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-[#227bed] transition-all duration-300 hover:translate-x-1">
+                  <a href="#services" className="inline-block transition-all duration-300 hover:translate-x-1 hover:text-brand-active">
                     Criação de Conteúdo
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-[#227bed] transition-all duration-300 hover:translate-x-1">
-                    Estratégias de Crescimento
+                  <a href="#services" className="inline-block transition-all duration-300 hover:translate-x-1 hover:text-brand-active">
+                    Cobertura de Eventos
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-[#227bed] transition-all duration-300 hover:translate-x-1">
-                    Consultoria
+                  <a href="#services" className="inline-block transition-all duration-300 hover:translate-x-1 hover:text-brand-active">
+                    Tráfego Pago
                   </a>
                 </li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Contato</h4>
+              <h4 className="mb-4 font-semibold">Contato</h4>
               <ul className="space-y-2 text-sm text-gray-400">
-                <li><a href="mailto:livinhubdigital@gmail.com">livinhubdigital@gmail.com</a></li>
-                <li>+55 (48) 99860-4665</li>
+                <li>
+                  <a href="mailto:livinhubdigital@gmail.com" className="transition-colors hover:text-brand-active">
+                    livinhubdigital@gmail.com
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://wa.me/5548998604665"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-brand-active"
+                  >
+                    +55 (48) 99860-4665
+                  </a>
+                </li>
                 <li className="pt-2">
-                  <div className="flex space-x-3">
-                    <a href="https://instagram.com/livinhubdigital" className="hover:text-[#227bed] transition-all duration-300 hover:scale-110">
-                      Instagram
-                    </a>
-                  </div>
+                  <a
+                    href="https://instagram.com/livinhubdigital"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center transition-all duration-300 hover:translate-x-1 hover:text-brand-active"
+                  >
+                    Instagram
+                  </a>
                 </li>
               </ul>
             </div>

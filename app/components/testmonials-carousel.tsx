@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
@@ -7,7 +8,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
-import { Star } from "lucide-react";
+import { Star, Quote } from "lucide-react";
 import { useRef } from "react";
 
 export default function TestimonialsCarousel() {
@@ -57,43 +58,62 @@ export default function TestimonialsCarousel() {
     },
   ];
 
-  const autoplay = useRef(Autoplay({ delay: 2500, stopOnInteraction: true }));
+  // Autoplay mais lento (tempo de leitura) e que pausa ao passar o mouse, retomando depois.
+  const autoplay = useRef(
+    Autoplay({ delay: 5000, stopOnInteraction: false, stopOnMouseEnter: true })
+  );
 
   return (
     <Carousel
-      opts={{ align: "start", loop: true }}
+      opts={{ align: "start", loop: true, watchDrag: false }}
       plugins={[autoplay.current]}
       className="w-full max-w-7xl mx-auto"
     >
-      <CarouselContent className="-ml-4">
+      {/* py-2 dá respiro vertical e evita que o ring/borda seja recortado pelo viewport */}
+      <CarouselContent className="-ml-4 py-2">
         {testimonials.map((t, i) => (
           <CarouselItem
             key={i}
             className="pl-4 basis-full md:basis-1/2 lg:basis-1/3"
           >
-            <Card className="bg-white/10 border-white/20 backdrop-blur-sm hover:bg-white/15 
-                             transition-all duration-300 hover:scale-105 h-full">
-              <CardContent className="p-8 text-white flex flex-col h-full">
-                {/* estrelas */}
-                <div className="flex mb-4">
+            <Card className="group h-full rounded-2xl border border-white/10 bg-white/[0.06] backdrop-blur-sm transition-colors duration-300 hover:border-brand-active/40 hover:bg-white/[0.1]">
+              <CardContent className="flex h-full flex-col p-7 text-white">
+                {/* aspas decorativas */}
+                <Quote
+                  className="mb-4 h-8 w-8 shrink-0 text-brand-active/70"
+                  fill="currentColor"
+                  aria-hidden="true"
+                />
+
+                {/* avaliação */}
+                <div className="mb-4 flex gap-1">
                   {[...Array(5)].map((_, j) => (
-                    <Star key={j} className="w-4 h-4 text-[#d8f700] fill-current" />
+                    <Star
+                      key={j}
+                      className="h-4 w-4 fill-current text-brand-lime"
+                    />
                   ))}
                 </div>
 
-                {/* texto */}
-                <p className="text-lg mb-6 italic">{t.text}</p>
+                {/* depoimento — limitado para uniformizar a altura dos cards */}
+                <p className="mb-8 line-clamp-[7] text-[15px] leading-relaxed text-white/85">
+                  {t.text.replace(/^[\s"“]+|[\s"”]+$/g, "")}
+                </p>
 
-                {/* foto + nome + cargo */}
-                <div className="flex items-center gap-4 mt-auto">
-                  <img
+                {/* autor — fixo no rodapé, nunca some */}
+                <div className="mt-auto flex items-center gap-4 border-t border-white/10 pt-5">
+                  <Image
                     src={t.photo}
                     alt={t.name}
-                    className="w-12 h-12 rounded-full object-cover border-2 border-[#227bed]/50"
+                    width={48}
+                    height={48}
+                    className="h-12 w-12 shrink-0 rounded-full object-cover ring-2 ring-brand-active/40"
                   />
-                  <div>
-                    <div className="font-semibold">{t.name}</div>
-                    <div className="text-white/70 text-sm">{t.role}</div>
+                  <div className="min-w-0">
+                    <div className="truncate font-semibold leading-tight">
+                      {t.name}
+                    </div>
+                    <div className="truncate text-sm text-white/60">{t.role}</div>
                   </div>
                 </div>
               </CardContent>
@@ -102,8 +122,8 @@ export default function TestimonialsCarousel() {
         ))}
       </CarouselContent>
 
-      <CarouselPrevious className="hidden sm:flex" />
-      <CarouselNext className="hidden sm:flex" />
+      <CarouselPrevious className="hidden border-white/20 bg-white/10 text-white hover:bg-white/20 hover:text-white sm:flex" />
+      <CarouselNext className="hidden border-white/20 bg-white/10 text-white hover:bg-white/20 hover:text-white sm:flex" />
     </Carousel>
   );
 }

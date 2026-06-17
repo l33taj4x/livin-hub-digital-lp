@@ -1,11 +1,46 @@
 import type { Metadata } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
+import { Besley } from 'next/font/google'
 import './globals.css'
 
+// Besley — fonte serifada de apoio do brandbook (disponível no Google Fonts).
+// Cobre os acentos editoriais/script enquanto a Hello Montana não é self-hosted.
+const besley = Besley({
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+  variable: '--font-besley',
+  display: 'swap',
+})
+
 export const metadata: Metadata = {
-  title: 'Livin Hub Digital',
-  description: 'Livin Hub Digital - Agência de Marketing.',
+  title: 'Livin - Hub Digital',
+  description:
+    'O hub entre a sua marca e o digital. Especialistas em gestão de redes sociais, conteúdo, branding e cobertura de eventos.',
+  keywords: [
+    'marketing digital',
+    'gestão de redes sociais',
+    'social media',
+    'branding',
+    'cobertura de eventos',
+    'agência de marketing',
+    'Livin Hub Digital',
+  ],
+  authors: [{ name: 'Livin Hub Digital' }],
+  metadataBase: new URL('https://livinhubdigital.com.br'),
+  openGraph: {
+    title: 'Livin - Hub Digital',
+    description:
+      'Somos o hub entre você e o digital. Estratégia, conteúdo e presença real para a sua marca.',
+    type: 'website',
+    locale: 'pt_BR',
+    siteName: 'Livin Hub Digital',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Livin - Hub Digital',
+    description: 'Somos o hub entre você e o digital.',
+  },
 }
 
 export default function RootLayout({
@@ -14,28 +49,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html
+      lang="pt-BR"
+      className={`${GeistSans.variable} ${GeistMono.variable} ${besley.variable}`}
+    >
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet" />
-        <style>{`
-html {
-  font-family: ${GeistSans.style.fontFamily};
-  --font-sans: ${GeistSans.variable};
-  --font-mono: ${GeistMono.variable};
-  
-}
-.playfair {
-  font-family: "Playfair Display", serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: italic;
-}
-        `}</style>
       </head>
-      <body>{children}</body>
+      <body className="font-sans">{children}</body>
     </html>
   )
 }

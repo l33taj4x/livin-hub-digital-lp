@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Autoplay from "embla-carousel-autoplay";
 import {
     Carousel,
@@ -13,12 +14,12 @@ import { useRef } from "react";
 export default function LogoCarousel() {
     const autoplay = useRef(
         Autoplay({
-            delay: 1500,
+            delay: 2000,
             stopOnInteraction: false,
             stopOnMouseEnter: true,
         })
     );
-    
+
     const logos = [
         { src: "/logos/logo-alanza-no-bg.png", alt: "Logo Alanza" },
         { src: "/logos/logo-dra-luciane-no-bg.png", alt: "Logo Dra. Luciane" },
@@ -43,23 +44,23 @@ export default function LogoCarousel() {
 
     return (
         <Carousel
-            opts={{ align: "start", loop: true }}
+            orientation="vertical"
+            opts={{ align: "start", loop: true, watchDrag: false }}
             plugins={[autoplay.current]}
-            className="w-full"
+            className="w-full max-w-md mx-auto"
             aria-label="Carrossel de logos de parceiros"
         >
-            <CarouselContent className="-ml-2">
+            {/* Altura fixa = uma logo por vez; rola verticalmente (para cima). */}
+            <CarouselContent className="-mt-4 h-[320px] md:h-[400px]">
                 {logos.map((logo, index) => (
-                    <CarouselItem
-                        key={index}
-                        className="pl-2 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5"
-                    >
-                        <div className="flex items-center justify-center h-64 w-full rounded-2xl bg-transparent">
-                            <img
+                    <CarouselItem key={index} className="pt-4 basis-full">
+                        <div className="relative h-full w-full">
+                            <Image
                                 src={logo.src}
                                 alt={logo.alt ?? `Logo ${index + 1}`}
-                                className="h-64 w-auto rounded-full object-contain transition"
-                                loading="lazy"
+                                fill
+                                sizes="(max-width: 768px) 80vw, 420px"
+                                className="object-contain p-6"
                             />
                         </div>
                     </CarouselItem>

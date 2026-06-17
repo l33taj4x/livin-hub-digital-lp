@@ -3,6 +3,86 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Livin Hub Digital — brand palette (brandbook oficial) exposta como tokens do tema.
+   Permite usar bg-brand-blue, text-brand-lime, etc. mantendo os hex já espalhados pelo código. */
+@theme {
+  --color-brand-blue: #005cc1;     /* New Blue */
+  --color-brand-active: #227bed;   /* Active Blue */
+  --color-brand-green: #e8eda9;    /* Flow Green */
+  --color-brand-ink: #000000;      /* Deep Core */
+  --color-brand-lilac: #d5add0;    /* Inner Glow */
+  --color-brand-soft: #e7dced;     /* Soft Signal */
+  --color-brand-base: #fffbf8;     /* Quiet Base */
+  --color-brand-lime: #d8f700;     /* Pulse Lime — destaque, usar com moderação */
+  --color-brand-night: #001a3d;    /* Azul-noite (apoio nos gradientes escuros) */
+  --color-brand-deep: #012f63;     /* Azul-profundo (apoio nos gradientes escuros) */
+
+  /* Sistema tipográfico (brandbook). Stacks em camadas que degradam com elegância:
+     - font-display  → Franklin Gothic Extra Condensed (títulos). Ativa ao soltar o arquivo.
+     - font-serif    → Besley (apoio, oficial, já ativa via Google Fonts).
+     - font-script   → Hello Montana (acento manuscrito). Cai em Besley itálico até chegar.
+     - font-sans     → Geist (corpo, leitura). */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-display: 'Franklin Gothic Extra Condensed', 'Arial Narrow',
+    'Helvetica Neue Condensed', var(--font-geist-sans), sans-serif;
+  --font-serif: var(--font-besley), Georgia, 'Times New Roman', serif;
+  --font-script: 'Hello Montana', var(--font-besley), Georgia, serif;
+
+  /* Animações registradas como utilitários (animate-*). Antes eram referenciadas
+     no JSX mas não existiam — agora os efeitos pretendidos funcionam de fato. */
+  --animate-fade-in-up: fade-in-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-spin-slow: spin-slow 14s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-aurora: aurora 18s ease-in-out infinite;
+}
+
+/* Blobs aurora — substituem as formas duras animadas por gradientes suaves em movimento. */
+@keyframes aurora {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.65; }
+  50%      { transform: translate3d(24px, -28px, 0) scale(1.18); opacity: 1; }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+
+/* ────────────────────────────────────────────────────────────────────────────
+   FONTES LICENCIADAS (self-host) — ATIVAÇÃO EM 2 PASSOS
+   1. Coloque os arquivos em /public/fonts/ (veja public/fonts/README.md):
+        FranklinGothic-ExtraCondensed.woff2
+        HelloMontana.woff2
+   2. Descomente os @font-face abaixo. As stacks --font-display / --font-script
+      já apontam para "Franklin Gothic Extra Condensed" e "Hello Montana",
+      então elas passam a ser usadas automaticamente.
+   ──────────────────────────────────────────────────────────────────────────── */
+/*
+@font-face {
+  font-family: 'Franklin Gothic Extra Condensed';
+  src: url('/fonts/FranklinGothic-ExtraCondensed.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Hello Montana';
+  src: url('/fonts/HelloMontana.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+*/
+
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -117,7 +197,51 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
+  /* Títulos usam a fonte de display do brandbook (Franklin Gothic Extra Condensed). */
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+  /* Foco visível e consistente para navegação por teclado */
+  :focus-visible {
+    outline: 2px solid var(--color-brand-active);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  /* Respeita usuários que preferem menos movimento */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Acento manuscrito/script (logo "in" da marca → Hello Montana, com Besley itálico
+   de fallback). Mantém a classe .playfair usada no JSX para não mexer no markup. */
+.playfair {
+  font-family: var(--font-script);
+  font-style: italic;
+  font-weight: 500;
+  font-optical-sizing: auto;
+}
+
+/* Utilitário opcional para aplicar a serifada Besley em trechos editoriais. */
+.font-serif-brand {
+  font-family: var(--font-serif);
 }
