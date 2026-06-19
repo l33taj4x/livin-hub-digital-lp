@@ -26,6 +26,7 @@ import { Reveal } from "@/app/components/reveal"
 import { CountUp } from "@/app/components/count-up"
 import { LogoCarousel } from "@/app/components/logo-carousel"
 import { TestimonialsCarousel } from "@/app/components/testmonials-carousel"
+import { PoweredByMindstorm } from "@/app/components/powered-by-mindstorm"
 
 type IconType = React.ComponentType<{ className?: string }>
 
@@ -585,7 +586,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-black py-16 text-white">
+      <footer className="bg-black pb-8 pt-16 text-white">
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid gap-8 md:grid-cols-4">
             <div className="flex flex-col items-start">
@@ -686,6 +687,9 @@ export default function Home() {
                 </li>
               </ul>
             </div>
+          </div>
+          <div className="mt-8 flex justify-center border-t border-white/10 pt-6">
+            <PoweredByMindstorm tone="dark" />
           </div>
         </div>
       </footer>
